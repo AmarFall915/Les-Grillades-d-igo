@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Les Grillades d'IGO | Steakhouse & African Dibiterie aux Almadies</title>
   <meta name="description" content="L'art du dibi et des viandes d'exception braisées au feu de bois. Une table prestigieuse aux Almadies, Dakar.">
 
@@ -45,6 +45,14 @@
   </script>
 
   <style>
+    /* Empêcher tout débordement horizontal sur l'ensemble de la page */
+    html, body {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      position: relative;
+    }
+
+    /* Curseur interactif doré sur Desktop */
     @media (hover: hover) and (pointer: fine) {
       body {
         cursor: none;
@@ -80,11 +88,35 @@
       }
     }
 
+    /* Modale Menu */
+    #menu-modal {
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    #menu-modal.hidden-modal {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #menu-modal.active-modal {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      transform: scale(0.96) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #menu-modal.active-modal .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Onglets de la modale */
     .tab-panel {
       display: none;
       opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
     .tab-panel.active {
       display: block;
@@ -93,16 +125,17 @@
     }
   </style>
 </head>
-<body class="bg-steak-black text-stone-200 font-sans antialiased selection:bg-steak-gold selection:text-black overflow-x-hidden">
+<body class="bg-steak-black text-stone-200 font-sans antialiased selection:bg-steak-gold selection:text-black w-full overflow-x-hidden">
 
   <!-- CURSEUR CUSTOM -->
   <div id="cursor-dot" class="hidden md:block"></div>
   <div id="cursor-circle" class="hidden md:block"></div>
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-steak-border/60">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-black/85 backdrop-blur-md border-b border-steak-border/60 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
       
+      <!-- LOGO -->
       <a href="#" class="flex items-center gap-3">
         <span class="text-steak-gold text-2xl sm:text-3xl"><i class="fa-solid fa-fire-burner"></i></span>
         <div class="flex flex-col">
@@ -111,14 +144,19 @@
         </div>
       </a>
 
+      <!-- NAV DESKTOP -->
       <nav class="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-[0.25em] uppercase text-stone-300">
         <a href="#about" class="hover:text-steak-gold transition">À Propos</a>
         <a href="#signatures" class="hover:text-steak-gold transition">Signatures</a>
-        <a href="#menu" class="hover:text-steak-gold transition">La Carte</a>
+        <button onclick="openMenuModal()" class="hover:text-steak-gold transition uppercase tracking-[0.25em] text-[11px] font-semibold text-stone-300 flex items-center gap-1.5">
+          <span>La Carte</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-steak-gold"></i>
+        </button>
         <a href="#livraison" class="hover:text-steak-gold transition">Livraison</a>
         <a href="#contact" class="hover:text-steak-gold transition">Accès & Horaires</a>
       </nav>
 
+      <!-- BOUTONS ACTIONS -->
       <div class="flex items-center gap-3 sm:gap-4">
         <a href="https://instagram.com/lesgrilladesdigo" 
            target="_blank" 
@@ -143,7 +181,9 @@
     <div id="mobile-menu" class="hidden lg:hidden bg-steak-panel border-b border-steak-border px-6 py-6 space-y-4">
       <a href="#about" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">À Propos</a>
       <a href="#signatures" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">Signatures</a>
-      <a href="#menu" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">La Carte</a>
+      <button onclick="openMenuModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="block w-full text-left text-steak-gold text-xs tracking-[0.2em] uppercase font-bold">
+        La Carte Complète <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+      </button>
       <a href="#livraison" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">Livraison</a>
       <a href="#contact" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">Accès & Horaires</a>
       <div class="pt-4 border-t border-steak-border flex flex-col gap-3">
@@ -157,8 +197,8 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
+  <!-- HERO SECTION : DEVANTURE D'IGO -->
+  <section class="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden w-full">
     <div class="absolute inset-0 z-0">
       <img src="facade-igo.jpg" 
            alt="Devanture Les Grillades d'IGO African Dibiterie Almadies" 
@@ -188,9 +228,10 @@
           <a href="#reservation" class="w-full sm:w-auto px-8 py-4 bg-steak-gold hover:bg-steak-goldHover text-black font-display font-bold text-xs uppercase tracking-[0.2em] transition duration-300 text-center shadow-xl">
             Réserver une table
           </a>
-          <a href="#menu" class="w-full sm:w-auto px-8 py-4 border border-steak-border hover:border-steak-gold text-white font-display text-xs uppercase tracking-[0.2em] transition duration-300 text-center bg-black/40 backdrop-blur-sm">
-            Découvrir le menu
-          </a>
+          <button onclick="openMenuModal()" class="w-full sm:w-auto px-8 py-4 border border-steak-border hover:border-steak-gold text-white font-display text-xs uppercase tracking-[0.2em] transition duration-300 text-center bg-black/40 backdrop-blur-sm flex items-center justify-center gap-2">
+            <span>Découvrir la carte</span>
+            <i class="fa-solid fa-arrow-right text-[10px] text-steak-gold"></i>
+          </button>
         </div>
 
       </div>
@@ -198,7 +239,7 @@
   </section>
 
   <!-- BANDEAU DES 4 PILIERS -->
-  <section class="border-y border-steak-border bg-steak-panel py-10">
+  <section class="border-y border-steak-border bg-steak-panel py-10 w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         
@@ -231,7 +272,7 @@
   </section>
 
   <!-- SECTION À PROPOS -->
-  <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
       
       <div data-aos="fade-right" data-aos-duration="900" class="space-y-6">
@@ -242,7 +283,7 @@
         <div class="w-20 h-0.5 bg-steak-gold shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
         
         <p class="text-stone-300 text-sm leading-relaxed font-light">
-          Aux <strong class="text-white font-semibold">Grillades d'IGO</strong>, nous perpétuons l'art ancestral de la dibiterie ouest-africaine tout en l'élevant aux standards de la haute restauration de viande[span_2](start_span)[span_2](end_span).
+          Aux <strong class="text-white font-semibold">Grillades d'IGO</strong>, nous perpétuons l'art ancestral de la dibiterie ouest-africaine tout en l'élevant aux standards de la haute restauration de viande.
         </p>
         <p class="text-stone-300 text-sm leading-relaxed font-light">
           Chaque découpe est minutieusement préparée, frottée d'épices soigneusement dosées et grillée sur une braise ardente. Que vous partagiez un plateau de dibi fumant ou une côte d'exception entre épicuriens, l'expérience est pensée dans les moindres détails.
@@ -284,10 +325,8 @@
     </div>
   </section>
 
-  <!-- SECTION SIGNATURES -->
-  <section id="signatures" class="py-24 bg-steak-panel border-y border-steak-border relative overflow-hidden">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-steak-gold/5 blur-[120px] pointer-events-none"></div>
-
+  <!-- SECTION SIGNATURES SUR L'ACCUEIL -->
+  <section id="signatures" class="py-24 bg-steak-panel border-y border-steak-border relative overflow-hidden w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4" data-aos="fade-up">
@@ -296,13 +335,14 @@
           <h2 class="font-display text-3xl sm:text-5xl text-white font-bold uppercase tracking-tight">Cuts Above The Rest</h2>
           <p class="text-xs text-steak-muted mt-2 font-light">Les pièces maîtresses façonnées sur notre grill au feu de bois.</p>
         </div>
-        <a href="#menu" class="text-xs uppercase tracking-[0.2em] text-steak-gold hover:text-white transition flex items-center gap-2">
-          <span>Voir tout le menu</span>
+        <button onclick="openMenuModal()" class="text-xs uppercase tracking-[0.2em] text-steak-gold hover:text-white transition flex items-center gap-2">
+          <span>Ouvrir toute la carte</span>
           <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- 4 cartes signatures épurées -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         
         <!-- 01 -->
         <div data-aos="fade-up" data-aos-delay="100" class="bg-gradient-to-b from-steak-card to-[#0d0c0b] border border-steak-border hover:border-steak-gold/70 transition-all duration-300 rounded-2xl p-7 flex flex-col justify-between shadow-2xl relative group">
@@ -320,7 +360,7 @@
               </h3>
               <div class="w-10 h-0.5 bg-steak-gold/50 my-3"></div>
               <p class="text-xs text-stone-300 leading-relaxed font-light">
-                Morceaux d'agneau soigneusement sélectionnés, marinés aux aromates traditionnels et braisés lentement. Servis avec oignons confits au grill et moutarde fine[span_3](start_span)[span_3](end_span).
+                Morceaux d'agneau soigneusement sélectionnés, marinés aux aromates traditionnels et braisés lentement. Servis avec oignons confits au grill et moutarde fine.
               </p>
             </div>
           </div>
@@ -350,8 +390,8 @@
                 La pièce d'exception avec son os long marbré, saisie vivement à la braise pour développer des arômes boisés profonds et un cœur juteux.
               </p>
               <div class="mt-3 text-[11px] text-steak-gold space-y-1">
-                <p>• 1 accompagnement au choix[span_4](start_span)[span_4](end_span)</p>
-                <p>• 1 jus local maison inclus[span_5](start_span)[span_5](end_span)</p>
+                <p>• 1 accompagnement au choix</p>
+                <p>• 1 jus local maison inclus</p>
               </div>
             </div>
           </div>
@@ -381,8 +421,8 @@
                 Côtelettes d'agneau tendres et délicatement persillées, rôties sous cloche sur braise ardente avec croûte parfumée aux épices secrètes.
               </p>
               <div class="mt-3 text-[11px] text-steak-gold space-y-1">
-                <p>• 1 accompagnement au choix[span_6](start_span)[span_6](end_span)</p>
-                <p>• 1 jus local maison inclus[span_7](start_span)[span_7](end_span)</p>
+                <p>• 1 accompagnement au choix</p>
+                <p>• 1 jus local maison inclus</p>
               </div>
             </div>
           </div>
@@ -412,8 +452,8 @@
                 Un persillage remarquable offrant un fondant absolu en bouche. Servie généreusement en découpe pour deux amateurs de grande viande.
               </p>
               <div class="mt-3 text-[11px] text-steak-gold space-y-1">
-                <p>• 2 accompagnements au choix[span_8](start_span)[span_8](end_span)</p>
-                <p>• 2 jus locaux maison inclus[span_9](start_span)[span_9](end_span)</p>
+                <p>• 2 accompagnements au choix</p>
+                <p>• 2 jus locaux maison inclus</p>
               </div>
             </div>
           </div>
@@ -426,308 +466,31 @@
 
       </div>
 
+      <!-- BANQUET DEMI-AGNEAU NETTOYÉ -->
+      <div data-aos="fade-up" class="bg-gradient-to-r from-steak-panel via-steak-card to-black border border-steak-gold/40 p-8 sm:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div class="space-y-2">
+          <span class="text-[10px] uppercase font-bold tracking-widest bg-steak-gold/20 text-steak-gold px-3 py-1 border border-steak-gold/30">
+            Pièce de Banquet • Sur Commande
+          </span>
+          <h3 class="font-display text-2xl sm:text-3xl text-white uppercase font-bold">Demi Agneau Cuit (7h de Cuisson)</h3>
+          <p class="text-stone-300 text-xs sm:text-sm max-w-xl leading-relaxed">
+            Sept heures de cuisson lente sous cloche au feu de bois pour une chair confite qui se détache toute seule.
+            <br><span class="text-steak-gold font-medium">★ Tous les accompagnements de la carte sont servis à discrétion !</span>
+          </p>
+        </div>
+        <div class="text-center md:text-right shrink-0">
+          <span class="font-display text-2xl sm:text-3xl font-bold text-white block">200 000 FCFA</span>
+          <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20le%20Demi%20Agneau%20Cuit%207h" target="_blank" class="mt-2 inline-block px-5 py-2.5 bg-steak-gold hover:bg-steak-goldHover text-black text-xs font-display font-bold uppercase tracking-widest transition">
+            Commander la pièce
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- SECTION MENU SUR ONGLETS DYNAMIQUES (LIBELLÉS NETTOYÉS) -->
-  <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12 space-y-2" data-aos="fade-up">
-      <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">Carte Gastronomique</span>
-      <h2 class="font-display text-3xl sm:text-5xl text-white font-bold uppercase tracking-tight">Le Menu</h2>
-      <div class="w-20 h-0.5 bg-steak-gold mx-auto mt-4 shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
-      <p class="text-xs text-steak-muted pt-2 font-light">Cliquez sur une catégorie pour afficher les créations correspondantes.</p>
-    </div>
-
-    <!-- BOUTONS D'ONGLETS -->
-    <div data-aos="fade-up" class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-12">
-      <button data-tab="tab-prestige" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-gold bg-steak-gold text-black shrink-0">
-        Pièces d'Exception
-      </button>
-      <button data-tab="tab-dibis" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
-        Dibis & Grillades
-      </button>
-      <button data-tab="tab-entrees" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
-        Entrées & Tapas
-      </button>
-      <button data-tab="tab-extras" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
-        Accompagnements, Desserts & Jus
-      </button>
-    </div>
-
-    <!-- CONTENUS DES ONGLETS -->
-    <div class="min-h-[420px]">
-      
-      <!-- ONGLET 1 : PIÈCES D'EXCEPTION -->
-      <div id="tab-prestige" class="tab-panel active space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">Le carré d'IGO</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">30 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Côtelettes d'agneau d'une tendreté rare saisies au grill.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 1 accompagnement au choix</p>
-              <p>✓ 1 jus local inclus</p>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">L'épaule d'IGO</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">50 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Épaule confite puis braisée, idéale pour 2 personnes.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 2 accompagnements au choix</p>
-              <p>✓ 2 jus locaux inclus</p>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">Single Tomahawk</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">35 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Pièce noble avec os long pour un arôme boisé profond.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 1 accompagnement au choix</p>
-              <p>✓ 1 jus local inclus</p>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">Duo Tomahawk</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">65 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Double découpe de Tomahawk braisée pour duo d'amateurs.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 2 accompagnements au choix</p>
-              <p>✓ 2 jus locaux inclus</p>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">Côte Black Angus</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">90 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Persillage parfait, jutosité et arômes profonds de grand cru.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 2 accompagnements au choix</p>
-              <p>✓ 2 jus locaux inclus</p>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-start">
-                <h4 class="font-display text-base font-bold uppercase text-white">Entrecôte Argentine</h4>
-                <span class="font-display font-bold text-steak-lightgold text-lg">25 000 FCFA</span>
-              </div>
-              <p class="text-xs text-steak-muted mt-2">Viande fondante et persillée saisie au feu de bois.</p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
-              <p>✓ 1 accompagnement au choix</p>
-              <p>✓ 1 jus local inclus</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-6 bg-gradient-to-r from-steak-panel via-steak-card to-black border border-steak-gold/40 p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
-          <div class="space-y-2">
-            <span class="text-[10px] uppercase font-bold tracking-widest bg-steak-gold/20 text-steak-gold px-3 py-1 border border-steak-gold/30">
-              Pièce de Banquet • Sur Commande[span_10](start_span)[span_10](end_span)
-            </span>
-            <h3 class="font-display text-2xl sm:text-3xl text-white uppercase font-bold">Demi Agneau Cuit (7h de Cuisson)[span_11](start_span)[span_11](end_span)</h3>
-            <p class="text-stone-300 text-xs sm:text-sm max-w-xl">
-              Sept heures de cuisson lente sous cloche au feu de bois pour une chair confite qui se détache toute seule[span_12](start_span)[span_12](end_span).
-              <br><span class="text-steak-gold font-medium">★ Tous les accompagnements de la carte sont servis à discrétion [span_13](start_span)[span_13](end_span)!</span>
-            </p>
-          </div>
-          <div class="text-center md:text-right shrink-0">
-            <span class="font-display text-2xl sm:text-3xl font-bold text-white block">200 000 FCFA</span>
-            <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20le%20Demi%20Agneau%20Cuit%207h" target="_blank" class="mt-2 inline-block px-5 py-2.5 bg-steak-gold hover:bg-steak-goldHover text-black text-xs font-display font-bold uppercase tracking-widest transition">
-              Commander la pièce
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGLET 2 : DIBIS & GRILLADES -->
-      <div id="tab-dibis" class="tab-panel space-y-8">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex justify-between items-center">
-            <div>
-              <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Le Classique</span>
-              <h4 class="font-display text-lg font-bold text-white uppercase mt-0.5">Dibi Agneau</h4>
-              <p class="text-xs text-steak-muted mt-1 max-w-sm">Agneau de premier choix braisé au feu de bois, oignons caramélisés et moutarde[span_14](start_span)[span_14](end_span).</p>
-            </div>
-            <span class="font-display font-bold text-steak-lightgold text-xl whitespace-nowrap ml-4">15 000 FCFA</span>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex justify-between items-center">
-            <div>
-              <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Tradition</span>
-              <h4 class="font-display text-lg font-bold text-white uppercase mt-0.5">Dibi Poulet</h4>
-              <p class="text-xs text-steak-muted mt-1 max-w-sm">Morceaux de poulet marinés à l'africaine, peau croustillante et cœur juteux[span_15](start_span)[span_15](end_span).</p>
-            </div>
-            <span class="font-display font-bold text-steak-lightgold text-xl whitespace-nowrap ml-4">10 000 FCFA</span>
-          </div>
-        </div>
-
-        <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl">
-          <div class="flex items-center justify-between border-b border-steak-border pb-3 mb-6">
-            <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white">Brochettes & Merguez au Grill</h4>
-            <span class="text-[10px] text-steak-gold uppercase tracking-widest font-semibold">Tarif unitaire</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div class="p-4 bg-black/60 border border-steak-border rounded-xl flex justify-between items-center sm:flex-col sm:items-start">
-              <span class="text-xs font-semibold uppercase text-stone-200">Brochette poulet</span>
-              <span class="font-display font-bold text-steak-lightgold text-base sm:mt-3">1 000 FCFA</span>
-            </div>
-            <div class="p-4 bg-black/60 border border-steak-border rounded-xl flex justify-between items-center sm:flex-col sm:items-start">
-              <span class="text-xs font-semibold uppercase text-stone-200">Brochette bœuf</span>
-              <span class="font-display font-bold text-steak-lightgold text-base sm:mt-3">1 500 FCFA</span>
-            </div>
-            <div class="p-4 bg-black/60 border border-steak-border rounded-xl flex justify-between items-center sm:flex-col sm:items-start">
-              <span class="text-xs font-semibold uppercase text-stone-200">Brochette agneau</span>
-              <span class="font-display font-bold text-steak-lightgold text-base sm:mt-3">1 500 FCFA</span>
-            </div>
-            <div class="p-4 bg-black/60 border border-steak-border rounded-xl flex justify-between items-center sm:flex-col sm:items-start">
-              <span class="text-xs font-semibold uppercase text-stone-200">Brochette brebis</span>
-              <span class="font-display font-bold text-steak-lightgold text-base sm:mt-3">1 500 FCFA</span>
-            </div>
-            <div class="p-4 bg-black/60 border border-steak-border rounded-xl flex justify-between items-center sm:flex-col sm:items-start">
-              <span class="text-xs font-semibold uppercase text-stone-200">Merguez</span>
-              <span class="font-display font-bold text-steak-lightgold text-base sm:mt-3">1 500 FCFA</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ONGLET 3 : ENTRÉES & TAPAS -->
-      <div id="tab-entrees" class="tab-panel">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Fait Maison</span>
-              <h4 class="font-display text-base font-bold text-white uppercase mt-1">Pastels x3 (Thon)</h4>
-              <p class="text-xs text-steak-muted mt-2">Tapas croustillantes farcies au thon épicé avec sauce tomate piquante[span_16](start_span)[span_16](end_span).</p>
-            </div>
-            <span class="font-display font-bold text-steak-lightgold text-lg mt-6 pt-4 border-t border-white/5">2 500 FCFA</span>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Fait Maison</span>
-              <h4 class="font-display text-base font-bold text-white uppercase mt-1">Pastels x3 (Viande Hachée)</h4>
-              <p class="text-xs text-steak-muted mt-2">Tapas farcies à la viande hachée marinée aux aromates et condiments locaux[span_17](start_span)[span_17](end_span).</p>
-            </div>
-            <span class="font-display font-bold text-steak-lightgold text-lg mt-6 pt-4 border-t border-white/5">2 500 FCFA</span>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-              <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Incontournable</span>
-              <h4 class="font-display text-base font-bold text-white uppercase mt-1">Alocos</h4>
-              <p class="text-xs text-steak-muted mt-2">Bananes plantains mûres frites, fondantes et caramélisées minute[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span).</p>
-            </div>
-            <span class="font-display font-bold text-steak-lightgold text-lg mt-6 pt-4 border-t border-white/5">3 000 FCFA</span>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ONGLET 4 : GARNITURES, DESSERTS & BOISSONS -->
-      <div id="tab-extras" class="tab-panel">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <div class="bg-steak-panel border border-steak-border rounded-2xl p-6">
-            <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider border-b border-steak-border pb-3 mb-4">Accompagnements</h4>
-            <div class="space-y-3 text-xs">
-              <div class="flex justify-between items-center text-stone-300">
-                <span>Alocos</span>
-                <span class="font-display font-bold text-steak-lightgold">3 000 FCFA</span>
-              </div>
-              <div class="flex justify-between items-center text-stone-300">
-                <span>Frites Maison</span>
-                <span class="font-display font-bold text-steak-lightgold">2 500 FCFA</span>
-              </div>
-              <div class="flex justify-between items-center text-stone-300">
-                <span>Riz thieb rouge</span>
-                <span class="font-display font-bold text-steak-lightgold">2 000 FCFA</span>
-              </div>
-              <div class="flex justify-between items-center text-stone-300">
-                <span>Attiéké</span>
-                <span class="font-display font-bold text-steak-lightgold">2 500 FCFA</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border rounded-2xl p-6">
-            <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider border-b border-steak-border pb-3 mb-4">Desserts</h4>
-            <div class="space-y-4 text-xs">
-              <div class="flex justify-between items-start text-stone-300">
-                <div>
-                  <p class="font-bold text-white">Thiakry (Deguê)</p>
-                  <p class="text-[10px] text-steak-muted">Semoule de mil et yaourt onctueux[span_20](start_span)[span_20](end_span)</p>
-                </div>
-                <span class="font-display font-bold text-steak-lightgold">1 500 FCFA</span>
-              </div>
-              <div class="flex justify-between items-start text-stone-300">
-                <div>
-                  <p class="font-bold text-white">Fruits frais coupés</p>
-                  <p class="text-[10px] text-steak-muted">Sélection de fruits de saison[span_21](start_span)[span_21](end_span)</p>
-                </div>
-                <span class="font-display font-bold text-steak-lightgold">2 500 FCFA</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-steak-panel border border-steak-border rounded-2xl p-6">
-            <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider border-b border-steak-border pb-3 mb-4">Boissons & Jus</h4>
-            <div class="space-y-2 text-xs text-stone-300">
-              <p class="text-[10px] uppercase font-bold text-steak-gold tracking-widest">Jus Locaux (1 500 FCFA)[span_22](start_span)[span_22](end_span)</p>
-              <p class="text-steak-muted pb-2">Bissap • Gingembre • Goyave • Mangue[span_23](start_span)[span_23](end_span)</p>
-              <p class="text-[10px] uppercase font-bold text-steak-gold tracking-widest pt-1">Classiques</p>
-              <div class="flex justify-between">
-                <span>Eau minérale 50cl</span>
-                <span class="font-bold text-steak-lightgold">1 000 FCFA</span>
-              </div>
-              <div class="flex justify-between">
-                <span>Eau gazeuse / Sodas</span>
-                <span class="font-bold text-steak-lightgold">1 500 FCFA</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- MODULE DE RÉSERVATION INTERACTIF WHATSAPP -->
-  <section id="reservation" class="py-20 bg-steak-panel border-t border-steak-border">
+  <!-- MODULE DE RÉSERVATION INTERACTIF WHATSAPP NETTOYÉ -->
+  <section id="reservation" class="py-20 bg-steak-panel border-t border-steak-border w-full overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
       
       <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">Préparez Votre Soirée</span>
@@ -735,7 +498,7 @@
         Réserver Une Table
       </h2>
       <p class="text-xs text-steak-muted max-w-md mx-auto mb-8">
-        Sélectionnez votre date, heure et nombre de convives. Vous serez immédiatement redirigé sur WhatsApp avec les détails pré-remplis[span_24](start_span)[span_24](end_span)[span_25](start_span)[span_25](end_span).
+        Sélectionnez votre date, heure et nombre de convives. Vous serez immédiatement redirigé sur WhatsApp avec les détails pré-remplis.
       </p>
 
       <div class="bg-black/60 border border-steak-border p-6 rounded-2xl max-w-3xl mx-auto">
@@ -780,7 +543,7 @@
   </section>
 
   <!-- BANDEAU LIVRAISON RAPIDE DAKAR -->
-  <section id="livraison" class="py-16 bg-black border-t border-steak-border">
+  <section id="livraison" class="py-16 bg-black border-t border-steak-border w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left" data-aos="fade-up">
       <div>
         <div class="flex items-center justify-center md:justify-start gap-2 text-steak-gold text-xs uppercase tracking-widest font-bold mb-1">
@@ -788,7 +551,7 @@
           <span>Livraison Nocturne Rapide</span>
         </div>
         <h3 class="font-display text-2xl text-white uppercase font-bold">Vos grillades chaudes partout à Dakar</h3>
-        <p class="text-xs text-steak-muted mt-1">Emballages isothermes garantissant que vos viandes arrivent brûlantes et savoureuses[span_26](start_span)[span_26](end_span).</p>
+        <p class="text-xs text-steak-muted mt-1">Emballages isothermes garantissant que vos viandes arrivent brûlantes et savoureuses.</p>
       </div>
       <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20en%20livraison" target="_blank" class="px-8 py-3.5 border border-steak-gold text-steak-gold hover:bg-steak-gold hover:text-black transition font-display text-xs uppercase tracking-widest font-bold whitespace-nowrap">
         Commander au 78 555 94 94
@@ -797,7 +560,7 @@
   </section>
 
   <!-- HORAIRES, ACCÈS & MAP -->
-  <section id="contact" class="py-20 bg-steak-panel border-t border-steak-border">
+  <section id="contact" class="py-20 bg-steak-panel border-t border-steak-border w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         
@@ -825,8 +588,8 @@
           </div>
 
           <div class="space-y-2 text-xs text-stone-300">
-            <p><strong class="text-white">Adresse :</strong> Route des Almadies (Ex Five, juste après le KFC), Dakar, Sénégal[span_27](start_span)[span_27](end_span)[span_28](start_span)[span_28](end_span)</p>
-            <p><strong class="text-white">Téléphone :</strong> +221 78 555 94 94 / +221 33 817 38 38[span_29](start_span)[span_29](end_span)[span_30](start_span)[span_30](end_span)</p>
+            <p><strong class="text-white">Adresse :</strong> Route des Almadies (Ex Five, juste après le KFC), Dakar, Sénégal</p>
+            <p><strong class="text-white">Téléphone :</strong> +221 78 555 94 94 / +221 33 817 38 38</p>
           </div>
 
           <div class="pt-2 flex items-center gap-3">
@@ -853,7 +616,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-black py-8 border-t border-steak-border text-center text-[10px] text-steak-muted uppercase tracking-[0.25em]">
+  <footer class="bg-black py-8 border-t border-steak-border text-center text-[10px] text-steak-muted uppercase tracking-[0.25em] w-full">
     <div class="max-w-7xl mx-auto px-4">
       <p>© 2026 Les Grillades d'IGO • Haute Dibiterie & Steaks Braisés. Dakar, Sénégal.</p>
     </div>
@@ -863,15 +626,311 @@
   <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." 
      target="_blank" 
      aria-label="Commander sur WhatsApp"
-     class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-black w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-white/20">
+     class="fixed bottom-6 right-6 z-30 bg-[#25D366] hover:bg-[#20ba5a] text-black w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110 border border-white/20">
     <i class="fa-brands fa-whatsapp text-white"></i>
   </a>
+
+  <!-- ============================================================== -->
+  <!-- LA CARTE : FENÊTRE MODALE PLEIN ÉCRAN GASTRONOMIQUE -->
+  <!-- ============================================================== -->
+  <div id="menu-modal" class="hidden-modal fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="modal-box bg-steak-panel border border-steak-border w-full max-w-5xl rounded-3xl p-6 sm:p-10 relative max-h-[92vh] overflow-y-auto shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+      
+      <!-- Bouton Fermer -->
+      <button onclick="closeMenuModal()" class="absolute top-5 right-5 sm:top-7 sm:right-7 w-11 h-11 rounded-full bg-black/60 border border-steak-border hover:border-steak-gold text-stone-300 hover:text-steak-gold flex items-center justify-center transition text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- En-tête -->
+      <div class="text-center max-w-xl mx-auto mb-8 space-y-1">
+        <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">Sélection Officielle</span>
+        <h3 class="font-display text-2xl sm:text-4xl text-white font-bold uppercase tracking-tight">La Carte du Restaurant</h3>
+        <div class="w-16 h-0.5 bg-steak-gold mx-auto mt-3"></div>
+      </div>
+
+      <!-- Onglets modale -->
+      <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-8">
+        <button data-tab="modal-tab-prestige" class="tab-btn px-4 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition border border-steak-gold bg-steak-gold text-black shrink-0">
+          Pièces d'Exception
+        </button>
+        <button data-tab="modal-tab-dibis" class="tab-btn px-4 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition border border-steak-border bg-black text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
+          Dibis & Grillades
+        </button>
+        <button data-tab="modal-tab-entrees" class="tab-btn px-4 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition border border-steak-border bg-black text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
+          Entrées & Tapas
+        </button>
+        <button data-tab="modal-tab-extras" class="tab-btn px-4 py-2.5 rounded-full text-xs font-display font-bold uppercase tracking-wider transition border border-steak-border bg-black text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
+          Garnitures & Boissons
+        </button>
+      </div>
+
+      <!-- Contenu 1 : Pièces d'Exception -->
+      <div id="modal-tab-prestige" class="tab-panel active space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">Le carré d'IGO</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">30 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Côtelettes d'agneau d'une tendreté rare saisies au grill.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 1 accompagnement au choix</p>
+              <p>✓ 1 jus local inclus</p>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">L'épaule d'IGO</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">50 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Épaule confite puis braisée, idéale pour 2 personnes.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 2 accompagnements au choix</p>
+              <p>✓ 2 jus locaux inclus</p>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">Single Tomahawk</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">35 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Pièce noble avec os long pour un arôme boisé profond.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 1 accompagnement au choix</p>
+              <p>✓ 1 jus local inclus</p>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">Duo Tomahawk</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">65 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Double découpe de Tomahawk braisée pour duo d'amateurs.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 2 accompagnements au choix</p>
+              <p>✓ 2 jus locaux inclus</p>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">Côte Black Angus</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">90 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Persillage parfait, jutosité et arômes profonds de grand cru.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 2 accompagnements au choix</p>
+              <p>✓ 2 jus locaux inclus</p>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <h4 class="font-display text-sm font-bold uppercase text-white">Entrecôte Argentine</h4>
+                <span class="font-display font-bold text-steak-lightgold text-base">25 000 FCFA</span>
+              </div>
+              <p class="text-xs text-steak-muted mt-1.5">Viande fondante et persillée saisie au feu de bois.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-steak-gold space-y-1">
+              <p>✓ 1 accompagnement au choix</p>
+              <p>✓ 1 jus local inclus</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Contenu 2 : Dibis & Grillades -->
+      <div id="modal-tab-dibis" class="tab-panel space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex justify-between items-center">
+            <div>
+              <span class="text-[9px] uppercase text-steak-gold tracking-widest font-bold">Le Classique</span>
+              <h4 class="font-display text-base font-bold text-white uppercase">Dibi Agneau</h4>
+              <p class="text-xs text-steak-muted mt-1">Agneau tendre braisé au feu de bois, oignons confits et moutarde.</p>
+            </div>
+            <span class="font-display font-bold text-steak-lightgold text-lg whitespace-nowrap ml-4">15 000 FCFA</span>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex justify-between items-center">
+            <div>
+              <span class="text-[9px] uppercase text-steak-gold tracking-widest font-bold">Tradition</span>
+              <h4 class="font-display text-base font-bold text-white uppercase">Dibi Poulet</h4>
+              <p class="text-xs text-steak-muted mt-1">Morceaux de poulet marinés, peau croustillante et cœur juteux.</p>
+            </div>
+            <span class="font-display font-bold text-steak-lightgold text-lg whitespace-nowrap ml-4">10 000 FCFA</span>
+          </div>
+        </div>
+
+        <div class="bg-black/60 border border-steak-border p-5 rounded-2xl">
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white mb-4">Brochettes & Merguez (L'Unité)</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div class="p-3 bg-steak-panel rounded-xl flex flex-col justify-between">
+              <span class="text-xs text-stone-200">Brochette poulet</span>
+              <span class="font-display font-bold text-steak-lightgold text-sm mt-2">1 000 FCFA</span>
+            </div>
+            <div class="p-3 bg-steak-panel rounded-xl flex flex-col justify-between">
+              <span class="text-xs text-stone-200">Brochette bœuf</span>
+              <span class="font-display font-bold text-steak-lightgold text-sm mt-2">1 500 FCFA</span>
+            </div>
+            <div class="p-3 bg-steak-panel rounded-xl flex flex-col justify-between">
+              <span class="text-xs text-stone-200">Brochette agneau</span>
+              <span class="font-display font-bold text-steak-lightgold text-sm mt-2">1 500 FCFA</span>
+            </div>
+            <div class="p-3 bg-steak-panel rounded-xl flex flex-col justify-between">
+              <span class="text-xs text-stone-200">Brochette brebis</span>
+              <span class="font-display font-bold text-steak-lightgold text-sm mt-2">1 500 FCFA</span>
+            </div>
+            <div class="p-3 bg-steak-panel rounded-xl flex flex-col justify-between col-span-2 sm:col-span-1">
+              <span class="text-xs text-stone-200">Merguez</span>
+              <span class="font-display font-bold text-steak-lightgold text-sm mt-2">1 500 FCFA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenu 3 : Entrées & Tapas -->
+      <div id="modal-tab-entrees" class="tab-panel">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-steak-gold tracking-widest font-bold">Fait Maison</span>
+              <h4 class="font-display text-sm font-bold text-white uppercase mt-1">Pastels x3 (Thon)</h4>
+              <p class="text-xs text-steak-muted mt-1.5">Tapas croustillantes farcies au thon épicé avec sauce tomate.</p>
+            </div>
+            <span class="font-display font-bold text-steak-lightgold text-base mt-4 pt-3 border-t border-white/5">2 500 FCFA</span>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-steak-gold tracking-widest font-bold">Fait Maison</span>
+              <h4 class="font-display text-sm font-bold text-white uppercase mt-1">Pastels x3 (Viande)</h4>
+              <p class="text-xs text-steak-muted mt-1.5">Tapas farcies à la viande hachée marinée aux aromates.</p>
+            </div>
+            <span class="font-display font-bold text-steak-lightgold text-base mt-4 pt-3 border-t border-white/5">2 500 FCFA</span>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border p-5 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] uppercase text-steak-gold tracking-widest font-bold">Incontournable</span>
+              <h4 class="font-display text-sm font-bold text-white uppercase mt-1">Alocos</h4>
+              <p class="text-xs text-steak-muted mt-1.5">Bananes plantains mûres frites, dorées et caramélisées.</p>
+            </div>
+            <span class="font-display font-bold text-steak-lightgold text-base mt-4 pt-3 border-t border-white/5">3 000 FCFA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenu 4 : Garnitures, Desserts & Boissons -->
+      <div id="modal-tab-extras" class="tab-panel">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          <div class="bg-black/60 border border-steak-border rounded-2xl p-5">
+            <h4 class="font-display text-xs font-bold text-white uppercase tracking-wider border-b border-steak-border pb-2.5 mb-3">Accompagnements</h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center text-stone-300">
+                <span>Alocos</span>
+                <span class="font-bold text-steak-lightgold">3 000 FCFA</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-300">
+                <span>Frites Maison</span>
+                <span class="font-bold text-steak-lightgold">2 500 FCFA</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-300">
+                <span>Riz thieb rouge</span>
+                <span class="font-bold text-steak-lightgold">2 000 FCFA</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-300">
+                <span>Attiéké</span>
+                <span class="font-bold text-steak-lightgold">2 500 FCFA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border rounded-2xl p-5">
+            <h4 class="font-display text-xs font-bold text-white uppercase tracking-wider border-b border-steak-border pb-2.5 mb-3">Desserts</h4>
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between items-start text-stone-300">
+                <div>
+                  <p class="font-bold text-white">Thiakry (Deguê)</p>
+                  <p class="text-[10px] text-steak-muted">Semoule de mil & yaourt onctueux</p>
+                </div>
+                <span class="font-bold text-steak-lightgold">1 500 FCFA</span>
+              </div>
+              <div class="flex justify-between items-start text-stone-300">
+                <div>
+                  <p class="font-bold text-white">Fruits frais coupés</p>
+                  <p class="text-[10px] text-steak-muted">Fruits de saison</p>
+                </div>
+                <span class="font-bold text-steak-lightgold">2 500 FCFA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-black/60 border border-steak-border rounded-2xl p-5">
+            <h4 class="font-display text-xs font-bold text-white uppercase tracking-wider border-b border-steak-border pb-2.5 mb-3">Boissons & Jus</h4>
+            <div class="space-y-2 text-xs text-stone-300">
+              <p class="text-[9px] uppercase font-bold text-steak-gold tracking-widest">Jus Locaux (1 500 FCFA)</p>
+              <p class="text-steak-muted pb-1">Bissap • Gingembre • Goyave • Mangue</p>
+              <div class="flex justify-between pt-1">
+                <span>Eau minérale 50cl</span>
+                <span class="font-bold text-steak-lightgold">1 000 FCFA</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Eau gazeuse / Sodas</span>
+                <span class="font-bold text-steak-lightgold">1 500 FCFA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- AOS JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
   <!-- SCRIPTS -->
   <script>
+    function openMenuModal() {
+      const modal = document.getElementById('menu-modal');
+      modal.classList.remove('hidden-modal');
+      modal.classList.add('active-modal');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenuModal() {
+      const modal = document.getElementById('menu-modal');
+      modal.classList.remove('active-modal');
+      modal.classList.add('hidden-modal');
+      document.body.style.overflow = '';
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenuModal();
+    });
+
+    document.getElementById('menu-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeMenuModal();
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -891,10 +950,10 @@
 
           tabButtons.forEach(btn => {
             btn.classList.remove('bg-steak-gold', 'text-black', 'border-steak-gold');
-            btn.classList.add('bg-steak-panel', 'text-stone-300', 'border-steak-border');
+            btn.classList.add('bg-black', 'text-stone-300', 'border-steak-border');
           });
 
-          button.classList.remove('bg-steak-panel', 'text-stone-300', 'border-steak-border');
+          button.classList.remove('bg-black', 'text-stone-300', 'border-steak-border');
           button.classList.add('bg-steak-gold', 'text-black', 'border-steak-gold');
 
           tabPanels.forEach(panel => {
