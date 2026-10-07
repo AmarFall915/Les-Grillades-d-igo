@@ -45,6 +45,30 @@
   </script>
 
   <style>
+    /* PRELOADER CINÉMATIQUE */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999999;
+      background-color: #070707;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    }
+    .preloader-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .pulse-gold {
+      animation: pulseGold 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseGold {
+      0%, 100% { opacity: 0.6; transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.2)); }
+      50% { opacity: 1; transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.8)); }
+    }
+
     /* Verrouillage strict du défilement latéral */
     html, body {
       max-width: 100vw !important;
@@ -55,18 +79,12 @@
       padding: 0;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     /* Curseur interactif doré sur Desktop */
     @media (hover: hover) and (pointer: fine) {
-      body {
-        cursor: none;
-      }
-      a, button, input, select, textarea, .tab-btn {
-        cursor: none;
-      }
+      body { cursor: none; }
+      a, button, input, select, textarea, .tab-btn { cursor: none; }
       #cursor-dot, #cursor-circle {
         pointer-events: none;
         position: fixed;
@@ -96,88 +114,44 @@
     }
 
     /* Fenêtre modale */
-    #menu-modal {
-      transition: opacity 0.35s ease, visibility 0.35s ease;
-    }
-    #menu-modal.hidden-modal {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    #menu-modal.active-modal {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .modal-box {
-      transform: scale(0.96) translateY(20px);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    #menu-modal.active-modal .modal-box {
-      transform: scale(1) translateY(0);
-    }
+    #menu-modal { transition: opacity 0.35s ease, visibility 0.35s ease; }
+    #menu-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+    #menu-modal.active-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+    .modal-box { transform: scale(0.96) translateY(20px); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    #menu-modal.active-modal .modal-box { transform: scale(1) translateY(0); }
 
     /* Onglets de la modale */
-    .tab-panel {
-      display: none;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    .tab-panel.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .tab-panel { display: none; opacity: 0; transform: translateY(8px); transition: opacity 0.25s ease, transform 0.25s ease; }
+    .tab-panel.active { display: block; opacity: 1; transform: translateY(0); }
 
     /* Reflet lumineux des boutons */
     @keyframes shineEffect {
-      0% {
-        transform: translateX(-150%) skewX(-20deg);
-      }
-      25% {
-        transform: translateX(250%) skewX(-20deg);
-      }
-      100% {
-        transform: translateX(250%) skewX(-20deg);
-      }
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      25% { transform: translateX(250%) skewX(-20deg); }
+      100% { transform: translateX(250%) skewX(-20deg); }
     }
-
-    .btn-shine-primary::after,
-    .btn-shine-secondary::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 60%;
-      height: 100%;
-      transform: translateX(-150%) skewX(-20deg);
-      pointer-events: none;
+    .btn-shine-primary::after, .btn-shine-secondary::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 60%; height: 100%; transform: translateX(-150%) skewX(-20deg); pointer-events: none;
     }
-
     .btn-shine-primary::after {
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
       animation: shineEffect 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
-
     .btn-shine-secondary::after {
-      background: linear-gradient(
-        90deg,
-        rgba(197, 160, 89, 0) 0%,
-        rgba(244, 227, 186, 0.25) 50%,
-        rgba(197, 160, 89, 0) 100%
-      );
+      background: linear-gradient(90deg, rgba(197, 160, 89, 0) 0%, rgba(244, 227, 186, 0.25) 50%, rgba(197, 160, 89, 0) 100%);
       animation: shineEffect 7s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.5s;
     }
   </style>
 </head>
 <body class="bg-steak-black text-stone-200 font-sans antialiased selection:bg-steak-gold selection:text-black w-full overflow-x-hidden">
+
+  <!-- PRELOADER CINÉMATIQUE -->
+  <div id="preloader">
+    <div class="pulse-gold flex flex-col items-center">
+      <i class="fa-solid fa-fire-burner text-5xl text-steak-gold mb-4"></i>
+      <span class="font-display text-2xl tracking-[0.3em] text-white uppercase">IGO</span>
+    </div>
+  </div>
 
   <!-- CURSEUR CUSTOM DESKTOP -->
   <div id="cursor-dot" class="hidden md:block"></div>
@@ -209,7 +183,17 @@
       </nav>
 
       <!-- BOUTONS ACTIONS -->
-      <div class="flex items-center gap-3 sm:gap-4">
+      <div class="flex items-center gap-4 sm:gap-6">
+        
+        <!-- SÉLECTEUR DE LANGUE (FR/EN) -->
+        <div class="hidden sm:flex items-center gap-1.5 text-[10px] font-display font-bold">
+          <button class="text-steak-gold transition cursor-pointer">FR</button>
+          <span class="text-steak-border">|</span>
+          <button class="text-stone-500 hover:text-stone-300 transition cursor-pointer">EN</button>
+        </div>
+
+        <div class="hidden sm:block w-px h-6 bg-steak-border"></div>
+
         <a href="https://instagram.com/lesgrilladesdigo" 
            target="_blank" 
            rel="noopener noreferrer"
@@ -222,7 +206,7 @@
           Réserver une table
         </a>
 
-        <button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none ml-1" aria-label="Menu Mobile">
+        <button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none" aria-label="Menu Mobile">
           <i class="fa-solid fa-bars-staggered"></i>
         </button>
       </div>
@@ -231,7 +215,14 @@
 
     <!-- TIROIR MOBILE -->
     <div id="mobile-menu" class="hidden lg:hidden bg-steak-panel border-b border-steak-border px-6 py-6 space-y-4">
-      <a href="#about" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">À Propos</a>
+      <!-- Sélecteur de langue Mobile -->
+      <div class="flex items-center justify-center gap-2 pb-4 text-[11px] font-display font-bold border-b border-white/5">
+        <button class="text-steak-gold">FR</button>
+        <span class="text-steak-border">|</span>
+        <button class="text-stone-500">EN</button>
+      </div>
+      
+      <a href="#about" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold pt-2">À Propos</a>
       <a href="#signatures" class="block text-stone-300 text-xs tracking-[0.2em] uppercase hover:text-steak-gold">Signatures</a>
       <button onclick="openMenuModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="block w-full text-left text-steak-gold text-xs tracking-[0.2em] uppercase font-bold">
         La Carte Complète <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
@@ -619,6 +610,64 @@
     </div>
   </section>
 
+  <!-- PREUVE SOCIALE (AVIS & PRESSE) -->
+  <section class="py-20 bg-steak-black border-t border-steak-border overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">L'Expérience IGO</span>
+        <h2 class="font-display text-2xl sm:text-4xl text-white font-bold uppercase tracking-tight mt-2">Ils En Parlent</h2>
+        <div class="w-16 h-0.5 bg-steak-gold mx-auto mt-4 shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Avis 1 -->
+        <div data-aos="fade-up" data-aos-delay="100" class="bg-steak-panel border border-steak-border p-8 rounded-2xl relative">
+          <div class="text-steak-gold text-sm flex gap-1 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="font-serif italic text-stone-300 text-lg mb-6">« Le meilleur Tomahawk de Dakar, sans conteste. Une cuisson au feu de bois maîtrisée à la perfection. Le cadre est tout simplement sublime. »</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-steak-card border border-steak-gold flex items-center justify-center text-steak-gold font-display font-bold">A</div>
+            <div>
+              <p class="text-white text-xs font-bold uppercase tracking-wider">Amadou D.</p>
+              <p class="text-[10px] text-steak-muted uppercase tracking-widest">Client Vérifié</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avis 2 -->
+        <div data-aos="fade-up" data-aos-delay="200" class="bg-steak-panel border border-steak-border p-8 rounded-2xl relative">
+          <div class="text-steak-gold text-sm flex gap-1 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="font-serif italic text-stone-300 text-lg mb-6">« Une véritable expérience gastronomique. L'épaule d'agneau confite 7 heures fond littéralement en bouche. Un incontournable des Almadies. »</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-steak-card border border-steak-gold flex items-center justify-center text-steak-gold font-display font-bold">S</div>
+            <div>
+              <p class="text-white text-xs font-bold uppercase tracking-wider">Sophie L.</p>
+              <p class="text-[10px] text-steak-muted uppercase tracking-widest">Guide Culinaire</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avis 3 -->
+        <div data-aos="fade-up" data-aos-delay="300" class="bg-steak-panel border border-steak-border p-8 rounded-2xl relative">
+          <div class="text-steak-gold text-sm flex gap-1 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="font-serif italic text-stone-300 text-lg mb-6">« Le service de nuit nous a sauvés ! Qualité de viande exceptionnelle et livraison en plein Dakar avec des emballages impeccables. »</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-steak-card border border-steak-gold flex items-center justify-center text-steak-gold font-display font-bold">K</div>
+            <div>
+              <p class="text-white text-xs font-bold uppercase tracking-wider">Karim N.</p>
+              <p class="text-[10px] text-steak-muted uppercase tracking-widest">Client Habitué</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- HORAIRES, ACCÈS & MAP -->
   <section id="contact" class="py-20 bg-steak-panel border-t border-steak-border w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -969,6 +1018,14 @@
 
   <!-- SCRIPTS -->
   <script>
+    // PRELOADER DISPARITION
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.classList.add('preloader-hidden');
+      }, 1500);
+    });
+
     function openMenuModal() {
       const modal = document.getElementById('menu-modal');
       modal.classList.remove('hidden-modal');
@@ -992,14 +1049,16 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      // AOS Animation init
-      if (typeof AOS !== 'undefined') {
+      // AOS Animation init (Désactivé sur très petits écrans pour éviter les sauts)
+      if (typeof AOS !== 'undefined' && window.innerWidth > 640) {
         AOS.init({
           once: true,
           duration: 800,
           easing: 'ease-out-cubic',
           offset: 40
         });
+      } else if (typeof AOS !== 'undefined') {
+        AOS.init({ once: true, offset: 0, duration: 400 });
       }
 
       // Onglets modale
