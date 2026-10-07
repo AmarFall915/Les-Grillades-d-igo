@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Grillades d'IGO | Dibi & Viandes d'Exception aux Almadies, Dakar</title>
-  <meta name="description" content="Savourez l'authenticité des grillades au feu de bois, dibis et pièces d'exception aux Almadies. Sur place, à emporter ou en livraison à Dakar.">
-  
+  <title>Les Grillades d'IGO | African Dibiterie & Grillades d'Exception aux Almadies</title>
+  <meta name="description" content="Savourez l'excellence de la dibiterie africaine et des viandes d'exception cuites au feu de bois aux Almadies, Dakar.">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Google Fonts -->
+  <!-- Google Fonts : Playfair Display, Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -21,17 +21,19 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
           },
           colors: {
-            brand: {
-              orange: '#EA580C',
-              darkorange: '#C2410C',
-              gold: '#D97706',
-              lightgold: '#FBBF24',
-              dark: '#0c0a09',
-              card: '#171513',
-              border: '#292524'
+            igo: {
+              gold: '#D4AF37',
+              lightgold: '#F3E5AB',
+              crimson: '#8B1E3F',
+              crimsonHover: '#A3244B',
+              dark: '#080706',
+              surface: '#12100E',
+              card: '#181614',
+              border: '#292522'
             }
           }
         }
@@ -39,628 +41,569 @@
     }
   </script>
 </head>
-<body class="bg-[#0b0a09] text-stone-100 font-sans antialiased selection:bg-brand-orange selection:text-white">
+<body class="bg-igo-dark text-stone-200 font-sans antialiased selection:bg-igo-crimson selection:text-white">
 
-  <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0a09]/95 backdrop-blur-md border-b border-stone-800/80">
+  <!-- NAVBAR STYLE URBANISTA (Bistronomie / Gastro) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="#" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2">
-        <span class="text-brand-orange text-3xl"><i class="fa-solid fa-fire-flame-curved"></i></span>
-        <span>Les Grillades d'<span class="text-brand-orange">IGO</span></span>
+      
+      <!-- LOGO / TITRE -->
+      <a href="#" class="flex flex-col">
+        <span class="font-display tracking-[0.22em] text-lg sm:text-xl font-bold uppercase text-white">Les Grillades d'IGO</span>
+        <span class="text-[9px] tracking-[0.35em] text-igo-gold uppercase font-medium">African Dibiterie • Almadies</span>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-300">
-        <a href="#menu" class="hover:text-brand-orange transition">La Carte</a>
-        <a href="#pieces-prestige" class="hover:text-brand-orange transition">Pièces d'Exception</a>
-        <a href="#apropos" class="hover:text-brand-orange transition">Notre Histoire</a>
-        <a href="#livraison" class="hover:text-brand-orange transition">Livraison</a>
-        <a href="#contact" class="hover:text-brand-orange transition">Accès & Horaires</a>
+      <!-- Navigation desktop -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase text-stone-300">
+        <a href="#menu" class="hover:text-igo-gold transition">La Carte</a>
+        <a href="#prestige" class="hover:text-igo-gold transition">Pièces d'Exception</a>
+        <a href="#apropos" class="hover:text-igo-gold transition">L'Expérience</a>
+        <a href="#livraison" class="hover:text-igo-gold transition">Livraison</a>
+        <a href="#contact" class="hover:text-igo-gold transition">Horaires & Accès</a>
       </nav>
 
-      <!-- Desktop CTA -->
-      <div class="hidden md:flex items-center gap-3">
-        <a href="tel:+221785559494" class="text-stone-300 hover:text-white flex items-center gap-2 text-sm font-semibold pr-2">
-          <i class="fa-solid fa-phone text-brand-orange"></i> 78 555 94 94
+      <!-- Action & Réseau -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="https://instagram.com/lesgrilladesdigo" target="_blank" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-stone-300 hover:text-white hover:border-white transition">
+          <i class="fa-brands fa-instagram text-sm"></i>
         </a>
-        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="bg-brand-orange hover:bg-brand-darkorange text-white text-sm font-semibold px-4 py-2.5 rounded-full transition shadow-lg shadow-orange-950/40 flex items-center gap-2">
-          <i class="fa-brands fa-whatsapp text-lg"></i> Commander
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20réserver%20une%20table" target="_blank" class="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-igo-crimson hover:bg-igo-crimsonHover text-white shadow-lg transition duration-300 flex items-center gap-2">
+          <span>Réserver une table</span>
+          <i class="fa-regular fa-calendar-check"></i>
         </a>
       </div>
 
-      <!-- Hamburger Button -->
-      <button id="menu-btn" class="md:hidden text-stone-300 hover:text-white text-2xl focus:outline-none">
-        <i class="fa-solid fa-bars"></i>
+      <!-- Hamburger mobile -->
+      <button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars-staggered"></i>
       </button>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-stone-900 border-b border-stone-800 px-6 py-6 space-y-4">
-      <a href="#menu" class="block text-stone-200 text-lg hover:text-brand-orange">La Carte Complète</a>
-      <a href="#pieces-prestige" class="block text-stone-200 text-lg hover:text-brand-orange">Pièces d'Exception</a>
-      <a href="#apropos" class="block text-stone-200 text-lg hover:text-brand-orange">Notre Histoire</a>
-      <a href="#livraison" class="block text-stone-200 text-lg hover:text-brand-orange">Livraison</a>
-      <a href="#contact" class="block text-stone-200 text-lg hover:text-brand-orange">Accès & Horaires</a>
-      <div class="pt-4 border-t border-stone-800 flex flex-col gap-3">
-        <a href="tel:+221785559494" class="w-full text-center bg-stone-800 text-stone-200 py-3 rounded-xl font-medium">
-          <i class="fa-solid fa-phone text-brand-orange mr-2"></i> Appeler l'équipe
-        </a>
-        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="w-full text-center bg-emerald-600 text-white py-3 rounded-xl font-medium">
-          <i class="fa-brands fa-whatsapp mr-2"></i> Commander sur WhatsApp
+    <!-- Tiroir Mobile -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 space-y-4">
+      <a href="#menu" class="block text-stone-200 text-sm tracking-widest uppercase hover:text-igo-gold">La Carte</a>
+      <a href="#prestige" class="block text-stone-200 text-sm tracking-widest uppercase hover:text-igo-gold">Pièces d'Exception</a>
+      <a href="#apropos" class="block text-stone-200 text-sm tracking-widest uppercase hover:text-igo-gold">L'Expérience</a>
+      <a href="#livraison" class="block text-stone-200 text-sm tracking-widest uppercase hover:text-igo-gold">Livraison</a>
+      <a href="#contact" class="block text-stone-200 text-sm tracking-widest uppercase hover:text-igo-gold">Horaires & Accès</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20réserver%20une%20table" target="_blank" class="w-full text-center bg-igo-crimson text-white py-3 rounded-full text-xs font-semibold uppercase tracking-widest">
+          Réserver une table
         </a>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
+  <!-- HERO SECTION : FAÇADE D'IGO & ESTHÉTIQUE GASTRO (STYLE URBANISTA) -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <!-- Image de fond : Façade moderne de restaurant de nuit aux tons chauds -->
     <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1920" 
-           alt="Grillades au feu de bois" 
-           class="w-full h-full object-cover opacity-20">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0b0a09] via-[#0b0a09]/80 to-transparent"></div>
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1920" 
+           alt="Devanture Les Grillades d'IGO" 
+           class="w-full h-full object-cover object-center scale-105 filter brightness-75">
+      <!-- Filtre gradient bistronomique sombre -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-igo-dark"></div>
     </div>
 
-    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
-      <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-orange-500/10 text-brand-orange border border-orange-500/20">
-        <i class="fa-solid fa-award"></i> Viande Halal & Cuisson Braisée au Feu de Bois
-      </span>
-      <h1 class="text-4xl sm:text-6xl font-serif font-extrabold tracking-tight text-white leading-tight">
-        Les Grillades d'<span class="text-brand-orange">IGO</span> – L'authenticité du Dibi aux Almadies.
-      </h1>
-      <p class="text-lg sm:text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed">
-        Savourez nos viandes d'exception sélectionnées avec soin, assaisonnées selon la tradition et cuites à la perfection. Sur place, à emporter ou en livraison partout à Dakar.
-      </p>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 pt-6">
       
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-        <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-brand-orange hover:bg-brand-darkorange text-white font-bold rounded-xl shadow-lg transition duration-200">
-          Consulter le Menu
+      <!-- BADGE D'OUVERTURE DYNAMIQUE (Inspiré Urbanista) -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-stone-200 text-[11px] uppercase tracking-wider shadow-xl">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Actuellement Ouvert • Service de Nuit</span>
+      </div>
+
+      <!-- MACARON CIRCULAIRE IGO (Style Macaron UB d'Urbanista) -->
+      <div class="mx-auto w-14 h-14 rounded-full bg-igo-crimson/80 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white font-serif font-bold text-base tracking-widest shadow-2xl">
+        IGO
+      </div>
+
+      <!-- TITRE PRINCIPAL BISTRONOMIQUE -->
+      <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-wider text-white uppercase leading-[1.1]">
+        Savourez l'Excellence
+      </h1>
+
+      <!-- SOUS-TITRE RAFFINÉ -->
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-stone-300 font-light tracking-wide leading-relaxed">
+        Une expérience dibiterie raffinée aux Almadies. Saveurs authentiques et ambiance unique mêlant dibis traditionnels, viandes d'exception maturées et cocktails signatures.
+      </p>
+
+      <!-- BOUTONS CALL TO ACTION URBANISTA -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+        <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-igo-crimson hover:bg-igo-crimsonHover text-white text-xs font-semibold tracking-widest uppercase transition-all duration-300 shadow-xl border border-white/10 hover:scale-105">
+          Découvrir le menu
         </a>
-        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp text-xl"></i> Commander (WhatsApp)
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20réserver%20une%20table" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md text-white text-xs font-semibold tracking-widest uppercase transition-all duration-300 border border-white/25 hover:border-white">
+          Réserver une table
         </a>
       </div>
+
+      <!-- Liseré adresse & livraison -->
+      <div class="pt-8 text-xs tracking-widest uppercase text-stone-400 font-medium flex flex-wrap items-center justify-center gap-4">
+        <span><i class="fa-solid fa-location-dot text-igo-gold mr-1.5"></i> Route des Almadies (Ex Five)</span>
+        <span>•</span>
+        <span><i class="fa-solid fa-motorcycle text-igo-gold mr-1.5"></i> Livraison Dakar au 78 555 94 94</span>
+      </div>
+
     </div>
   </section>
 
-  <!-- BANDEAU SAUCES MAISON -->
-  <section class="bg-stone-900/90 border-y border-stone-800 py-6">
+  <!-- BANDEAU HORAIRES & SAUCES -->
+  <section class="border-y border-igo-border bg-igo-surface/60 backdrop-blur-sm py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2 text-brand-lightgold font-serif font-bold text-lg">
-          <i class="fa-solid fa-pepper-hot text-brand-orange"></i>
-          <span>Nos Sauces & Assaisonnements Inclus :</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-mortar-pestle text-igo-gold text-xl"></i>
+          <div>
+            <h4 class="text-xs uppercase tracking-widest text-igo-gold font-bold">Nos Sauces Incluses</h4>
+            <p class="text-xs text-stone-400 mt-0.5">Sauce piment • Sauce verte • Poudre de kankan</p>
+          </div>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-stone-200">
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600 inline-block"></span> Sauce piment</span>
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Sauce verte</span>
-          <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-700 inline-block"></span> Poudre de kankan</span>
+        <div class="flex items-center gap-3 md:justify-end">
+          <i class="fa-solid fa-clock text-igo-gold text-xl"></i>
+          <div>
+            <h4 class="text-xs uppercase tracking-widest text-igo-gold font-bold">Service Tardif</h4>
+            <p class="text-xs text-stone-400 mt-0.5">Ven, Sam & Dim jusqu'à 06h00 du matin non-stop</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION MENU PRINCIPAL -->
-  <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="text-brand-orange font-semibold text-sm uppercase tracking-widest">Tradition & Saveurs</span>
-      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">Le Menu</h2>
-      <div class="w-20 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+  <!-- MENU / CARTE -->
+  <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+      <span class="text-xs uppercase tracking-[0.3em] text-igo-gold font-bold">Gastronomie & Braise</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-white font-medium uppercase tracking-wider">La Carte</h2>
+      <div class="w-16 h-0.5 bg-igo-gold/60 mx-auto mt-4"></div>
     </div>
 
     <!-- ENTRÉES & DIBIS -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-14">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
       
       <!-- NOS ENTRÉES -->
-      <div class="bg-stone-900/60 p-7 rounded-3xl border border-stone-800/80">
-        <div class="flex items-center gap-3 border-b border-stone-800 pb-4 mb-6">
-          <span class="text-2xl text-brand-orange"><i class="fa-solid fa-bowl-food"></i></span>
-          <h3 class="text-2xl font-serif font-bold text-white">Nos Entrées</h3>
+      <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-8 backdrop-blur-sm shadow-xl">
+        <div class="flex items-center justify-between border-b border-igo-border pb-4 mb-6">
+          <h3 class="font-serif text-2xl text-white tracking-wide uppercase">Nos Entrées</h3>
+          <span class="text-[10px] tracking-widest text-stone-400 uppercase">Saveurs locales</span>
         </div>
-        <div class="space-y-4">
-          <div class="flex justify-between items-center pb-3 border-b border-stone-800/50">
+        <div class="space-y-5">
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-3">
             <div>
-              <h4 class="font-bold text-white text-base">Pastels x3 (Thon)</h4>
-              <p class="text-xs text-stone-400">Tapas farcies au thon savoureux</p>
+              <h4 class="text-white font-medium text-base tracking-wide">Pastels x3 <span class="text-stone-400 text-xs">(Thon)</span></h4>
+              <p class="text-xs text-stone-400">Tapas farcies au thon épicé</p>
             </div>
-            <span class="text-brand-lightgold font-bold text-lg whitespace-nowrap">2 500 FCFA</span>
+            <span class="font-serif font-bold text-igo-lightgold text-lg">2 500 FCFA</span>
           </div>
-          <div class="flex justify-between items-center pb-3 border-b border-stone-800/50">
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-3">
             <div>
-              <h4 class="font-bold text-white text-base">Pastels x3 (Viande Hachée)</h4>
-              <p class="text-xs text-stone-400">Tapas farcies à la viande hachée assaisonnée</p>
+              <h4 class="text-white font-medium text-base tracking-wide">Pastels x3 <span class="text-stone-400 text-xs">(Viande Hachée)</span></h4>
+              <p class="text-xs text-stone-400">Tapas farcies à la viande marinée</p>
             </div>
-            <span class="text-brand-lightgold font-bold text-lg whitespace-nowrap">2 500 FCFA</span>
+            <span class="font-serif font-bold text-igo-lightgold text-lg">2 500 FCFA</span>
           </div>
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-baseline">
             <div>
-              <h4 class="font-bold text-white text-base">Alocos</h4>
-              <p class="text-xs text-stone-400">Bananes plantains frites, dorées et fondantes</p>
+              <h4 class="text-white font-medium text-base tracking-wide">Alocos</h4>
+              <p class="text-xs text-stone-400">Bananes plantains frites, dorées et caramélisées</p>
             </div>
-            <span class="text-brand-lightgold font-bold text-lg whitespace-nowrap">3 000 FCFA</span>
+            <span class="font-serif font-bold text-igo-lightgold text-lg">3 000 FCFA</span>
           </div>
         </div>
       </div>
 
       <!-- NOS DIBIS -->
-      <div class="bg-stone-900/60 p-7 rounded-3xl border border-stone-800/80">
-        <div class="flex items-center gap-3 border-b border-stone-800 pb-4 mb-6">
-          <span class="text-2xl text-brand-orange"><i class="fa-solid fa-fire"></i></span>
-          <h3 class="text-2xl font-serif font-bold text-white">Nos Dibis</h3>
+      <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-8 backdrop-blur-sm shadow-xl">
+        <div class="flex items-center justify-between border-b border-igo-border pb-4 mb-6">
+          <h3 class="font-serif text-2xl text-white tracking-wide uppercase">Nos Dibis</h3>
+          <span class="text-[10px] tracking-widest text-igo-gold uppercase">Spécialité Maison</span>
         </div>
-        <div class="space-y-4">
-          <div class="flex justify-between items-center pb-3 border-b border-stone-800/50">
+        <div class="space-y-6">
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-4">
             <div>
-              <h4 class="font-bold text-white text-base">Dibi Agneau</h4>
-              <p class="text-xs text-stone-400">Morceaux d'agneau tendres, grillés au feu de bois avec oignons caramélisés</p>
+              <h4 class="text-white font-medium text-base tracking-wide">Dibi Agneau</h4>
+              <p class="text-xs text-stone-400">Agneau de premier choix braisé au feu de bois, oignons caramélisés et moutarde</p>
             </div>
-            <span class="text-brand-lightgold font-bold text-lg whitespace-nowrap">15 000 FCFA</span>
+            <span class="font-serif font-bold text-igo-lightgold text-xl whitespace-nowrap">15 000 FCFA</span>
           </div>
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-baseline">
             <div>
-              <h4 class="font-bold text-white text-base">Dibi Poulet</h4>
-              <p class="text-xs text-stone-400">Morceaux de poulet braisés aux épices traditionnelles et moutarde</p>
+              <h4 class="text-white font-medium text-base tracking-wide">Dibi Poulet</h4>
+              <p class="text-xs text-stone-400">Poulet mariné braisé selon l'art traditionnel ouest-africain</p>
             </div>
-            <span class="text-brand-lightgold font-bold text-lg whitespace-nowrap">10 000 FCFA</span>
+            <span class="font-serif font-bold text-igo-lightgold text-xl whitespace-nowrap">10 000 FCFA</span>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- NOS GRILLADES -->
-    <div class="bg-stone-900/60 p-8 rounded-3xl border border-stone-800/80 mb-14">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-4 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="text-2xl text-brand-orange"><i class="fa-solid fa-utensils"></i></span>
-          <h3 class="text-2xl font-serif font-bold text-white">Nos Grillades (Brochettes & Merguez)</h3>
+    <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-8 backdrop-blur-sm shadow-xl mb-20">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-igo-border pb-4 mb-8">
+        <div>
+          <h3 class="font-serif text-2xl text-white tracking-wide uppercase">Nos Grillades (Brochettes & Merguez)</h3>
+          <p class="text-xs text-stone-400 mt-1">Cuisson minute sur braise ardente</p>
         </div>
-        <span class="text-xs text-stone-400 uppercase tracking-widest hidden sm:inline">Tarifs à l'unité</span>
+        <span class="text-[11px] tracking-widest text-igo-gold uppercase font-semibold mt-2 sm:mt-0">Tarif par brochette</span>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="p-4 bg-stone-800/50 rounded-2xl flex justify-between items-center">
-          <div>
-            <h4 class="font-semibold text-white">Brochette poulet</h4>
-            <span class="text-xs text-stone-400">Tendre et marinée</span>
-          </div>
-          <div class="text-right">
-            <span class="text-brand-lightgold font-bold text-base">1 000 FCFA</span>
-            <span class="text-[10px] text-stone-400 block">L'UNITÉ</span>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="p-4 bg-black/40 border border-white/5 rounded-2xl flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-wider text-stone-300 font-medium">Brochette poulet</span>
+          <span class="font-serif font-bold text-igo-lightgold text-lg mt-3">1 000 FCFA</span>
         </div>
-
-        <div class="p-4 bg-stone-800/50 rounded-2xl flex justify-between items-center">
-          <div>
-            <h4 class="font-semibold text-white">Brochette bœuf</h4>
-            <span class="text-xs text-stone-400">Morceaux de filet choisis</span>
-          </div>
-          <div class="text-right">
-            <span class="text-brand-lightgold font-bold text-base">1 500 FCFA</span>
-            <span class="text-[10px] text-stone-400 block">L'UNITÉ</span>
-          </div>
+        <div class="p-4 bg-black/40 border border-white/5 rounded-2xl flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-wider text-stone-300 font-medium">Brochette bœuf</span>
+          <span class="font-serif font-bold text-igo-lightgold text-lg mt-3">1 500 FCFA</span>
         </div>
-
-        <div class="p-4 bg-stone-800/50 rounded-2xl flex justify-between items-center">
-          <div>
-            <h4 class="font-semibold text-white">Brochette agneau</h4>
-            <span class="text-xs text-stone-400">Agneau juteux assaisonné</span>
-          </div>
-          <div class="text-right">
-            <span class="text-brand-lightgold font-bold text-base">1 500 FCFA</span>
-            <span class="text-[10px] text-stone-400 block">L'UNITÉ</span>
-          </div>
+        <div class="p-4 bg-black/40 border border-white/5 rounded-2xl flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-wider text-stone-300 font-medium">Brochette agneau</span>
+          <span class="font-serif font-bold text-igo-lightgold text-lg mt-3">1 500 FCFA</span>
         </div>
-
-        <div class="p-4 bg-stone-800/50 rounded-2xl flex justify-between items-center">
-          <div>
-            <h4 class="font-semibold text-white">Brochette brebis</h4>
-            <span class="text-xs text-stone-400">Goût corsé et typique</span>
-          </div>
-          <div class="text-right">
-            <span class="text-brand-lightgold font-bold text-base">1 500 FCFA</span>
-            <span class="text-[10px] text-stone-400 block">L'UNITÉ</span>
-          </div>
+        <div class="p-4 bg-black/40 border border-white/5 rounded-2xl flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-wider text-stone-300 font-medium">Brochette brebis</span>
+          <span class="font-serif font-bold text-igo-lightgold text-lg mt-3">1 500 FCFA</span>
         </div>
-
-        <div class="p-4 bg-stone-800/50 rounded-2xl flex justify-between items-center sm:col-span-2 lg:col-span-1">
-          <div>
-            <h4 class="font-semibold text-white">Merguez</h4>
-            <span class="text-xs text-stone-400">Épicée et savoureuse</span>
-          </div>
-          <div class="text-right">
-            <span class="text-brand-lightgold font-bold text-base">1 500 FCFA</span>
-            <span class="text-[10px] text-stone-400 block">L'UNITÉ</span>
-          </div>
+        <div class="p-4 bg-black/40 border border-white/5 rounded-2xl flex flex-col justify-between">
+          <span class="text-xs uppercase tracking-wider text-stone-300 font-medium">Merguez</span>
+          <span class="font-serif font-bold text-igo-lightgold text-lg mt-3">1 500 FCFA</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SECTION PIÈCES D'EXCEPTION & FORMULES (PRESTIGE) -->
-  <section id="pieces-prestige" class="py-20 bg-stone-950 border-t border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-brand-orange font-semibold text-sm uppercase tracking-widest">Le Haut de Gamme</span>
-        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">Pièces d'Exception</h2>
-        <p class="text-stone-400 text-sm mt-3">Toutes nos pièces d'exception sont servies en formules complètes avec accompagnements et jus locaux au choix.</p>
-        <div class="w-20 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+    <!-- SECTION PIÈCES D'EXCEPTION & PRESTIGE -->
+    <div id="prestige" class="mb-20">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+        <span class="text-xs uppercase tracking-[0.3em] text-igo-gold font-bold">L'Art de la Haute Viande</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-white font-medium uppercase tracking-wider">Pièces d'Exception</h2>
+        <p class="text-xs text-stone-400">Servies en formules complètes avec garnitures et jus locaux signature.</p>
       </div>
 
-      <!-- Grille des formules viandes d'exception -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Le Carré d'IGO -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 1 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">Le carré d'IGO</h3>
-              <span class="text-brand-lightgold font-bold text-xl">30 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">Le carré d'IGO</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">30 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">Côtelettes d'agneau braisées d'une tendreté incomparable.</p>
+            <p class="text-xs text-stone-400 mt-2">Côtelettes d'agneau braisées d'une texture fondante incomparable.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 accompagnement au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 jus local inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 accompagnement au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 jus local inclus</p>
           </div>
         </div>
 
-        <!-- L'épaule d'IGO -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 2 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">L'épaule d'IGO</h3>
-              <span class="text-brand-lightgold font-bold text-xl">50 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">L'épaule d'IGO</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">50 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">Épaule confite et grillée, idéale pour un repas généreux à partager.</p>
+            <p class="text-xs text-stone-400 mt-2">Épaule braisée et juteuse, idéale à partager à deux convives.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 accompagnements au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 jus locaux inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 accompagnements au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 jus locaux inclus</p>
           </div>
         </div>
 
-        <!-- Single Tomahawk -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 3 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">Single Tomahawk</h3>
-              <span class="text-brand-lightgold font-bold text-xl">35 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">Single Tomahawk</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">35 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">La pièce maîtresse des carnivores, cuite avec son os long au grill.</p>
+            <p class="text-xs text-stone-400 mt-2">La coupe royale avec son os long, saisie au feu de bois pour un arôme fumé.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 accompagnement au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 jus local inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 accompagnement au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 jus local inclus</p>
           </div>
         </div>
 
-        <!-- Duo Tomahawk -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 4 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">Duo Tomahawk</h3>
-              <span class="text-brand-lightgold font-bold text-xl">65 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">Duo Tomahawk</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">65 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">Double pièce de Tomahawk braisée pour régaler deux amateurs.</p>
+            <p class="text-xs text-stone-400 mt-2">Deux pièces magistrales pour les passionnés de grande viande.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 accompagnements au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 jus locaux inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 accompagnements au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 jus locaux inclus</p>
           </div>
         </div>
 
-        <!-- Côte de bœuf Black Angus -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 5 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">Côte de bœuf Black Angus</h3>
-              <span class="text-brand-lightgold font-bold text-xl">90 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">Côte Black Angus</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">90 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">Persillage parfait, jutosité et arômes intenses de bœuf d'exception.</p>
+            <p class="text-xs text-stone-400 mt-2">Persillage de prestige, tendreté absolue et jutosité raffinée.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 accompagnements au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 2 jus locaux inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 accompagnements au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 2 jus locaux inclus</p>
           </div>
         </div>
 
-        <!-- Entrecôte Argentine -->
-        <div class="bg-stone-900 border border-stone-800 rounded-3xl p-6 hover:border-brand-gold/60 transition flex flex-col justify-between">
+        <!-- Carte 6 -->
+        <div class="bg-igo-surface border border-igo-border hover:border-igo-gold/50 rounded-3xl p-7 transition duration-300 flex flex-col justify-between shadow-xl">
           <div>
             <div class="flex justify-between items-start">
-              <h3 class="text-xl font-serif font-bold text-white">Entrecôte Argentine</h3>
-              <span class="text-brand-lightgold font-bold text-xl">25 000 FCFA</span>
+              <h4 class="font-serif text-xl text-white font-medium uppercase tracking-wide">Entrecôte Argentine</h4>
+              <span class="font-serif font-bold text-igo-lightgold text-lg">25 000 FCFA</span>
             </div>
-            <p class="text-stone-400 text-xs mt-2">La renommée de la pampa : une texture ultra fondante sous la braise.</p>
+            <p class="text-xs text-stone-400 mt-2">Viande importée réputée pour sa saveur beurrée et son persillage fin.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-1">
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 accompagnement au choix</p>
-            <p class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> 1 jus local inclus</p>
+          <div class="mt-6 pt-4 border-t border-white/5 text-[11px] text-stone-300 space-y-1 tracking-wider uppercase">
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 accompagnement au choix</p>
+            <p><span class="text-igo-gold mr-1.5">✓</span> 1 jus local inclus</p>
           </div>
         </div>
 
       </div>
 
-      <!-- PIÈCES À PARTAGER (GRAND BANQUET) -->
-      <div class="bg-gradient-to-r from-stone-900 via-stone-900 to-[#1e140d] border border-brand-gold/40 p-8 sm:p-10 rounded-3xl relative overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="space-y-3 max-w-2xl">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-gold/20 text-brand-lightgold border border-brand-gold/30">
-              Sur commande uniquement
-            </span>
-            <h3 class="text-3xl font-serif font-bold text-white">Demi agneau cuit</h3>
-            <p class="text-stone-300 text-sm leading-relaxed">
-              <strong class="text-brand-orange">7h de cuisson lente</strong> au feu de bois pour une viande confite à souhait qui se détache toute seule. 
-              <br><span class="text-brand-lightgold font-medium">★ Tous les accompagnements sont servis au choix !</span>
-            </p>
-          </div>
-          <div class="text-center md:text-right shrink-0">
-            <span class="text-3xl sm:text-4xl font-extrabold text-white block">200 000 FCFA</span>
-            <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20le%20Demi%20Agneau%20Cuit" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-darkorange text-white font-bold px-6 py-3 rounded-xl transition shadow-lg">
-              <i class="fa-brands fa-whatsapp text-lg"></i> Réserver la pièce
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ACCOMPAGNEMENTS, DESSERTS & BOISSONS -->
-  <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- NOS ACCOMPAGNEMENTS -->
-      <div class="bg-stone-900/60 p-6 rounded-3xl border border-stone-800">
-        <div class="flex items-center gap-3 border-b border-stone-800 pb-3 mb-5">
-          <span class="text-xl text-brand-orange"><i class="fa-solid fa-plate-wheat"></i></span>
-          <h3 class="text-xl font-serif font-bold text-white">Accompagnements</h3>
-        </div>
+      <!-- PIÈCE ROYALE : DEMI-AGNEAU -->
+      <div class="mt-8 bg-gradient-to-r from-igo-surface via-stone-900 to-[#221015] border border-igo-gold/40 p-8 sm:p-10 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-3">
-          <div class="flex justify-between items-center text-sm">
-            <span class="text-stone-200">Alocos</span>
-            <span class="font-bold text-brand-lightgold">3 000 FCFA</span>
-          </div>
-          <div class="flex justify-between items-center text-sm">
-            <span class="text-stone-200">Frites</span>
-            <span class="font-bold text-brand-lightgold">2 500 FCFA</span>
-          </div>
-          <div class="flex justify-between items-center text-sm">
-            <span class="text-stone-200">Riz thieb rouge</span>
-            <span class="font-bold text-brand-lightgold">2 000 FCFA</span>
-          </div>
-          <div class="flex justify-between items-center text-sm">
-            <span class="text-stone-200">Attiéké</span>
-            <span class="font-bold text-brand-lightgold">2 500 FCFA</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NOS DESSERTS -->
-      <div class="bg-stone-900/60 p-6 rounded-3xl border border-stone-800">
-        <div class="flex items-center gap-3 border-b border-stone-800 pb-3 mb-5">
-          <span class="text-xl text-brand-orange"><i class="fa-solid fa-ice-cream"></i></span>
-          <h3 class="text-xl font-serif font-bold text-white">Nos Desserts</h3>
-        </div>
-        <div class="space-y-4">
-          <div class="flex justify-between items-start text-sm">
-            <div>
-              <span class="text-stone-200 font-medium block">Thiakry (Deguê)</span>
-              <span class="text-[11px] text-stone-400">Dessert onctueux au couscous de mil & yaourt</span>
-            </div>
-            <span class="font-bold text-brand-lightgold whitespace-nowrap">1 500 FCFA</span>
-          </div>
-          <div class="flex justify-between items-start text-sm">
-            <div>
-              <span class="text-stone-200 font-medium block">Fruits de saison frais</span>
-              <span class="text-[11px] text-stone-400">Morceaux de fruits fraîchement coupés</span>
-            </div>
-            <span class="font-bold text-brand-lightgold whitespace-nowrap">2 500 FCFA</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NOS BOISSONS -->
-      <div class="bg-stone-900/60 p-6 rounded-3xl border border-stone-800">
-        <div class="flex items-center gap-3 border-b border-stone-800 pb-3 mb-5">
-          <span class="text-xl text-brand-orange"><i class="fa-solid fa-wine-glass"></i></span>
-          <h3 class="text-xl font-serif font-bold text-white">Nos Boissons</h3>
-        </div>
-        
-        <div class="space-y-3">
-          <span class="text-xs uppercase font-bold text-brand-orange tracking-wider block">Jus Locaux Maison</span>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Bissap</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Jus de gingembre</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Jus de goyave</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Jus de mangue</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-
-          <span class="text-xs uppercase font-bold text-brand-orange tracking-wider block pt-2">Classiques</span>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Eau 50cl</span>
-            <span class="font-semibold text-brand-lightgold">1 000 FCFA</span>
-          </div>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Eau gazeuse</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-          <div class="flex justify-between text-xs text-stone-300">
-            <span>Boisson gazeuse / Soda</span>
-            <span class="font-semibold text-brand-lightgold">1 500 FCFA</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SECTION À PROPOS -->
-  <section id="apropos" class="py-20 bg-stone-900/50 border-y border-stone-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
-          <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Tradition & Passion</span>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Le secret de nos grillades</h2>
-          <p class="text-stone-300 leading-relaxed">
-            Aux <strong class="text-white">Grillades d'IGO</strong>, nous perpétuons l'art de la grillade ouest-africaine. Notre secret ? Une sélection rigoureuse de viandes de première qualité, une marinade jalousement gardée et une cuisson maîtrisée qui préserve toute la tendreté et les sucs de la viande.
+          <span class="px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest bg-igo-gold/20 text-igo-lightgold border border-igo-gold/30">
+            Pièce d'Exception à Partager
+          </span>
+          <h3 class="font-serif text-3xl sm:text-4xl text-white uppercase tracking-wider font-semibold">Demi agneau cuit</h3>
+          <p class="text-stone-300 text-xs sm:text-sm max-w-xl">
+            <strong>7h de cuisson lente</strong> au feu de bois pour une chair ultra fondante et confite. <br>
+            <span class="text-igo-lightgold">★ Tous les accompagnements de la carte sont servis à discrétion.</span>
           </p>
-          <p class="text-stone-300 leading-relaxed">
-            Que vous partagiez un plateau de dibi en famille ou que vous preniez un repas sur le pouce entre collègues, nous mettons la même passion dans votre assiette.
-          </p>
-          <div class="grid grid-cols-3 gap-4 pt-4 text-center">
-            <div class="p-3 bg-stone-800/50 rounded-xl">
-              <span class="text-2xl font-bold text-brand-orange">100%</span>
-              <p class="text-xs text-stone-400 mt-1">Viande Halal</p>
-            </div>
-            <div class="p-3 bg-stone-800/50 rounded-xl">
-              <span class="text-2xl font-bold text-brand-orange">Feu de bois</span>
-              <p class="text-xs text-stone-400 mt-1">Cuisson Authentique</p>
-            </div>
-            <div class="p-3 bg-stone-800/50 rounded-xl">
-              <span class="text-2xl font-bold text-brand-orange">Almadies</span>
-              <p class="text-xs text-stone-400 mt-1">Cadre Chaleureux</p>
-            </div>
-          </div>
+          <span class="text-xs text-stone-400 block italic">Sur commande uniquement</span>
         </div>
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=900" 
-               alt="Grillades braisées" 
-               class="rounded-3xl shadow-2xl border border-stone-800 w-full object-cover h-[450px]">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION LIVRAISON -->
-  <section id="livraison" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-gradient-to-br from-stone-900 via-stone-900 to-stone-950 p-8 sm:p-12 rounded-3xl border border-stone-800">
-      <div class="max-w-2xl">
-        <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Service Rapide</span>
-        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2">Vos grillades livrées chaudes chez vous</h2>
-        <p class="text-stone-300 mt-4 leading-relaxed">
-          Pas envie de sortir ? <em>Les Grillades d'IGO</em> viennent à vous. Profitez de notre service de livraison rapide sur Dakar et sa banlieue. Nos emballages isothermes garantissent que votre dibi arrive à table aussi chaud et croustillant qu'à la sortie du grill.
-        </p>
-
-        <div class="mt-8 space-y-4">
-          <h3 class="text-white font-bold text-lg">Comment commander ?</h3>
-          <ol class="space-y-3">
-            <li class="flex items-center gap-3 text-stone-300">
-              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">1</span>
-              <span>Parcourez notre carte en ligne.</span>
-            </li>
-            <li class="flex items-center gap-3 text-stone-300">
-              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">2</span>
-              <span>Cliquez sur le bouton WhatsApp pour envoyer vos choix en 1 clic.</span>
-            </li>
-            <li class="flex items-center gap-3 text-stone-300">
-              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">3</span>
-              <span>Confirmez votre adresse et réglez à la livraison (Espèces, Wave ou Orange Money).</span>
-            </li>
-          </ol>
-        </div>
-
-        <div class="mt-8">
-          <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20passer%20une%20commande%20en%20livraison" target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-lg">
-            <i class="fa-brands fa-whatsapp text-2xl"></i> Commander en livraison
+        <div class="text-center md:text-right shrink-0">
+          <span class="font-serif text-3xl sm:text-4xl font-bold text-white block">200 000 FCFA</span>
+          <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20le%20Demi%20Agneau%20Cuit%20(7h%20de%20cuisson)" target="_blank" class="mt-4 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-igo-crimson hover:bg-igo-crimsonHover text-white text-xs font-semibold uppercase tracking-wider transition shadow-lg">
+            Commander la pièce
           </a>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- FORMULAIRE TRAITEUR & PRIVATISATION -->
-  <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6">
-    <div class="bg-stone-900 p-8 rounded-3xl border border-stone-800 text-center">
-      <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Événements & Banquets</span>
-      <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">Privatisation & Traiteur Événementiel</h3>
-      <p class="text-stone-400 text-sm mt-2 max-w-xl mx-auto">
-        Mariages, baptêmes, anniversaires ou soirées d'entreprise : profitez de nos méchouis, dibis et buffets sur mesure.
-      </p>
+    <!-- ACCOMPAGNEMENTS, DESSERTS & BOISSONS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- ACCOMPAGNEMENTS -->
+      <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-7">
+        <h4 class="font-serif text-xl text-white uppercase tracking-wider border-b border-igo-border pb-3 mb-5">Accompagnements</h4>
+        <div class="space-y-3 text-xs">
+          <div class="flex justify-between items-center text-stone-300">
+            <span>Alocos</span>
+            <span class="font-bold text-igo-lightgold">3 000 FCFA</span>
+          </div>
+          <div class="flex justify-between items-center text-stone-300">
+            <span>Frites Maison</span>
+            <span class="font-bold text-igo-lightgold">2 500 FCFA</span>
+          </div>
+          <div class="flex justify-between items-center text-stone-300">
+            <span>Riz thieb rouge</span>
+            <span class="font-bold text-igo-lightgold">2 000 FCFA</span>
+          </div>
+          <div class="flex justify-between items-center text-stone-300">
+            <span>Attiéké</span>
+            <span class="font-bold text-igo-lightgold">2 500 FCFA</span>
+          </div>
+        </div>
+      </div>
 
-      <form class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left" onsubmit="event.preventDefault(); alert('Votre demande a bien été envoyée à l\'équipe d\'IGO !');">
-        <input type="text" placeholder="Votre nom" required class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
-        <input type="tel" placeholder="Votre numéro de téléphone" required class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
-        <input type="date" class="bg-stone-800 border border-stone-700 text-stone-300 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
-        <input type="number" placeholder="Nombre d'invités prévu" class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
-        <textarea placeholder="Précisez votre demande (lieu, formules souhaitées...)" rows="3" class="sm:col-span-2 bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm"></textarea>
-        <button type="submit" class="sm:col-span-2 bg-brand-orange hover:bg-brand-darkorange text-white font-bold py-3.5 rounded-xl transition">
-          Demander un devis sur mesure
-        </button>
-      </form>
+      <!-- DESSERTS -->
+      <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-7">
+        <h4 class="font-serif text-xl text-white uppercase tracking-wider border-b border-igo-border pb-3 mb-5">Desserts</h4>
+        <div class="space-y-4 text-xs">
+          <div class="flex justify-between items-start text-stone-300">
+            <div>
+              <p class="font-medium text-white">Thiakry (Deguê)</p>
+              <p class="text-[10px] text-stone-400">Semoule de mil & yaourt doux</p>
+            </div>
+            <span class="font-bold text-igo-lightgold">1 500 FCFA</span>
+          </div>
+          <div class="flex justify-between items-start text-stone-300">
+            <div>
+              <p class="font-medium text-white">Fruits de saison frais</p>
+              <p class="text-[10px] text-stone-400">Morceaux fraîchement découpés</p>
+            </div>
+            <span class="font-bold text-igo-lightgold">2 500 FCFA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOISSONS -->
+      <div class="bg-igo-card/70 border border-igo-border rounded-3xl p-7">
+        <h4 class="font-serif text-xl text-white uppercase tracking-wider border-b border-igo-border pb-3 mb-5">Boissons</h4>
+        <div class="space-y-2.5 text-xs text-stone-300">
+          <p class="text-[10px] uppercase font-bold text-igo-gold tracking-widest">Jus Locaux (1 500 FCFA)</p>
+          <p class="text-stone-400">Bissap • Gingembre • Goyave • Mangue</p>
+          
+          <p class="text-[10px] uppercase font-bold text-igo-gold tracking-widest pt-2">Classiques</p>
+          <div class="flex justify-between">
+            <span>Eau minérale 50cl</span>
+            <span class="font-bold text-igo-lightgold">1 000 FCFA</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Eau gazeuse / Sodas</span>
+            <span class="font-bold text-igo-lightgold">1 500 FCFA</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ACCÈS, HORAIRES & MAP -->
-  <section id="contact" class="py-20 bg-stone-950 border-t border-stone-800">
+  <!-- SECTION EXPÉRIENCE / NOTRE HISTOIRE -->
+  <section id="apropos" class="py-24 bg-igo-surface border-y border-igo-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        <!-- Informations pratiques -->
         <div class="space-y-6">
-          <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Trouvez-nous</span>
-          <h2 class="text-3xl font-serif font-bold text-white">Accès & Horaires</h2>
-
-          <div class="space-y-4">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-bold">Adresse exacte</h4>
-                <p class="text-stone-400 text-sm">Route des Almadies, Lot N°10 (juste après le KFC), Dakar, Sénégal.</p>
-              </div>
+          <span class="text-xs uppercase tracking-[0.3em] text-igo-gold font-bold">L'Expérience d'IGO</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-white uppercase tracking-wider font-semibold">
+            Saveurs Authentiques, Ambiance Unique.
+          </h2>
+          <p class="text-stone-300 text-sm leading-relaxed font-light">
+            Aux <strong class="text-white font-semibold">Grillades d'IGO</strong>, nous réinventons la dibiterie dakaroise en alliant le respect du feu de bois artisanal et les exigences de la restauration bistronomique. 
+          </p>
+          <p class="text-stone-300 text-sm leading-relaxed font-light">
+            Chaque pièce est méticuleusement sélectionnée, marinée selon des secrets de famille et grillée pour sublimer le goût brut de la viande. Un cadre feutré et une terrasse animée aux Almadies pour vos dîners tardifs et moments d'exception.
+          </p>
+          
+          <div class="pt-4 flex gap-8">
+            <div>
+              <span class="font-serif text-3xl text-igo-gold font-bold block">100%</span>
+              <span class="text-[11px] uppercase tracking-wider text-stone-400">Viande Halal</span>
             </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-bold">Téléphones</h4>
-                <p class="text-stone-400 text-sm">
-                  <a href="tel:+221338173838" class="hover:text-white transition">+221 33 817 38 38</a> &nbsp;|&nbsp; 
-                  <a href="tel:+221785559494" class="hover:text-white transition">+221 78 555 94 94</a>
-                </p>
-              </div>
+            <div>
+              <span class="font-serif text-3xl text-igo-gold font-bold block">Braise</span>
+              <span class="text-[11px] uppercase tracking-wider text-stone-400">Feu de bois pur</span>
             </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-bold">Horaires de service</h4>
-                <ul class="text-stone-400 text-sm mt-1 space-y-1">
-                  <li><strong class="text-stone-200">Jeudi au Dimanche :</strong> 12h00 – 06h00 (Service continu)</li>
-                  <li><strong class="text-stone-200">Vendredi :</strong> 12h00 – 02h00 <span class="text-xs text-stone-500">(Pause prière 13h–15h)</span></li>
-                  <li><strong class="text-stone-200">Lundi au Mercredi :</strong> Nous consulter</li>
-                </ul>
-              </div>
+            <div>
+              <span class="font-serif text-3xl text-igo-gold font-bold block">06h00</span>
+              <span class="text-[11px] uppercase tracking-wider text-stone-400">Service de nuit</span>
             </div>
           </div>
         </div>
 
-        <!-- Google Maps -->
-        <div class="rounded-3xl overflow-hidden border border-stone-800 h-[350px] lg:h-full min-h-[300px]">
+        <!-- Visuel bistronomie feutrée -->
+        <div class="relative">
+          <div class="w-full h-[450px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000" 
+                 alt="Ambiance restaurant grillades IGO" 
+                 class="w-full h-full object-cover">
+          </div>
+          <!-- Macaron flottant -->
+          <div class="absolute -bottom-6 -left-6 bg-igo-crimson text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-white/20">
+            <p class="font-serif text-2xl font-bold">Almadies</p>
+            <p class="text-[10px] uppercase tracking-widest text-stone-200">Dakar • Sénégal</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION LIVRAISON DAKAR -->
+  <section id="livraison" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-r from-igo-surface via-stone-900 to-black border border-igo-border rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="space-y-4 max-w-xl">
+        <div class="inline-flex items-center gap-2 text-igo-gold text-xs uppercase tracking-widest font-bold">
+          <i class="fa-solid fa-motorcycle text-base"></i>
+          <span>On fait aussi la livraison</span>
+        </div>
+        <h3 class="font-serif text-3xl sm:text-4xl text-white uppercase tracking-wider font-semibold">
+          Vos grillades chaudes partout à Dakar
+        </h3>
+        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
+          Commandez en un clic via WhatsApp. Nos livreurs équipés de caissons thermiques acheminent votre dibi et vos viandes d'exception en préservant toute la fraîcheur et la chaleur du grill.
+        </p>
+      </div>
+
+      <div class="shrink-0 text-center space-y-3">
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander%20en%20livraison" target="_blank" class="px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs uppercase tracking-widest shadow-xl flex items-center justify-center gap-3 transition">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          <span>Commander au +221 78 555 94 94</span>
+        </a>
+        <p class="text-[11px] text-stone-500">Paiement : Wave, Orange Money ou Espèces</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCÈS, HORAIRES OFFICIELS & MAPS -->
+  <section id="contact" class="py-24 bg-black border-t border-igo-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- HORAIRES OFFICIELS EXACTS TIRÉS DE L'AFFICHE -->
+        <div class="space-y-6">
+          <span class="text-xs uppercase tracking-[0.3em] text-igo-gold font-bold">Informations Pratiques</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-white uppercase tracking-wider font-semibold">Horaires & Contact</h2>
+
+          <!-- Grille horaires -->
+          <div class="bg-igo-surface border border-igo-border rounded-2xl p-6 space-y-3 text-xs">
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-stone-300 font-semibold uppercase tracking-wider">Jeudi</span>
+              <span class="text-igo-lightgold font-mono font-medium">12:00 – 02:00</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-stone-300 font-semibold uppercase tracking-wider">Vendredi</span>
+              <span class="text-igo-lightgold font-mono font-medium">15:00 – 06:00</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/5">
+              <span class="text-stone-300 font-semibold uppercase tracking-wider">Samedi</span>
+              <span class="text-igo-lightgold font-mono font-medium">12:00 – 06:00</span>
+            </div>
+            <div class="flex justify-between items-center py-2">
+              <span class="text-stone-300 font-semibold uppercase tracking-wider">Dimanche</span>
+              <span class="text-igo-lightgold font-mono font-medium">12:00 – 06:00</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-2 text-xs text-stone-300">
+            <p class="flex items-center gap-3">
+              <i class="fa-solid fa-location-dot text-igo-gold text-sm w-4"></i>
+              <span>Dakar, Route des Almadies (Ex Five, juste après le KFC)</span>
+            </p>
+            <p class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-igo-gold text-sm w-4"></i>
+              <span>+221 78 555 94 94 / +221 33 817 38 38</span>
+            </p>
+          </div>
+
+          <!-- Réseaux Sociaux officiels -->
+          <div class="flex items-center gap-4 pt-3">
+            <span class="text-xs uppercase tracking-widest text-stone-400">Suivez-nous :</span>
+            <div class="flex gap-2 text-stone-300">
+              <a href="#" class="w-8 h-8 rounded-full bg-stone-900 border border-white/10 flex items-center justify-center hover:text-igo-gold"><i class="fa-brands fa-instagram text-xs"></i></a>
+              <a href="#" class="w-8 h-8 rounded-full bg-stone-900 border border-white/10 flex items-center justify-center hover:text-igo-gold"><i class="fa-brands fa-snapchat text-xs"></i></a>
+              <a href="#" class="w-8 h-8 rounded-full bg-stone-900 border border-white/10 flex items-center justify-center hover:text-igo-gold"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+            </div>
+            <span class="text-xs font-mono text-stone-400">@lesgrilladesdigo</span>
+          </div>
+        </div>
+
+        <!-- GOOGLE MAPS EMBED -->
+        <div class="h-[350px] lg:h-full min-h-[300px] rounded-3xl overflow-hidden border border-igo-border">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.625345711681!2d-17.51866462414777!3d14.733796685767115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172517eb28abf%3A0xe5f9bce416c1f1f!2sAlmadies%2C%20Dakar!5e0!3m2!1sfr!2ssn!4v1700000000000!5m2!1sfr!2ssn" 
             width="100%" 
             height="100%" 
-            style="border:0;" 
+            style="border:0; filter: invert(90%) hue-rotate(180deg);" 
             allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
+            loading="lazy">
           </iframe>
         </div>
 
@@ -669,18 +612,17 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-black py-8 border-t border-stone-900 text-center text-xs text-stone-500">
+  <footer class="bg-[#050404] py-8 border-t border-white/5 text-center text-[11px] text-stone-500 uppercase tracking-widest">
     <div class="max-w-7xl mx-auto px-4">
-      <p>© 2026 Les Grillades d'IGO. Tous droits réservés.</p>
-      <p class="mt-1">Dibi traditionnel & viandes de prestige au feu de bois aux Almadies, Dakar.</p>
+      <p>© 2026 Les Grillades d'IGO • African Dibiterie. Tous droits réservés.</p>
     </div>
   </footer>
 
-  <!-- BOUTON WHATSAPP FLOTTANT -->
+  <!-- BOUTON WHATSAPP FLOTTANT (STYLE URBANISTA AVEC BADGE) -->
   <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." 
      target="_blank" 
      aria-label="Commander sur WhatsApp"
-     class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110">
+     class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-transform hover:scale-110 border border-white/20">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
