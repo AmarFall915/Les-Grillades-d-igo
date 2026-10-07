@@ -10,12 +10,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- AOS (Animate On Scroll) CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <!-- Google Fonts : Cinzel, Cormorant Garamond, Great Vibes (Signature) & Plus Jakarta Sans -->
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Google Fonts : Cinzel, Cormorant Garamond, Great Vibes & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -43,8 +43,9 @@
       }
     }
   </script>
+
   <style>
-    /* Curseur Luxe Personnalisé (Uniquement sur desktop) */
+    /* Curseur interactif doré (ordinateurs uniquement) */
     @media (hover: hover) and (pointer: fine) {
       body {
         cursor: none;
@@ -52,43 +53,42 @@
       a, button, input, select, textarea, .tab-btn {
         cursor: none;
       }
-      #custom-cursor-dot, #custom-cursor-outline {
+      #cursor-dot, #cursor-circle {
         pointer-events: none;
         position: fixed;
         top: 0;
         left: 0;
         transform: translate(-50%, -50%);
         border-radius: 50%;
-        z-index: 99999;
-        transition: opacity 0.2s ease;
+        z-index: 999999;
       }
-      #custom-cursor-dot {
+      #cursor-dot {
         width: 6px;
         height: 6px;
         background-color: #C5A059;
       }
-      #custom-cursor-outline {
+      #cursor-circle {
         width: 32px;
         height: 32px;
-        border: 1px solid rgba(197, 160, 89, 0.55);
-        transition: width 0.25s ease-out, height 0.25s ease-out, border-color 0.2s ease, background-color 0.2s ease;
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
       }
-      body.hovered #custom-cursor-outline {
-        width: 55px;
-        height: 55px;
+      body.cursor-active #cursor-circle {
+        width: 52px;
+        height: 52px;
         border-color: #C5A059;
-        background-color: rgba(197, 160, 89, 0.08);
+        background-color: rgba(197, 160, 89, 0.1);
       }
     }
 
-    /* Animation fluide des onglets */
-    .tab-content {
+    /* Transition douce des onglets */
+    .tab-panel {
       display: none;
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     }
-    .tab-content.active {
+    .tab-panel.active {
       display: block;
       opacity: 1;
       transform: translateY(0);
@@ -97,15 +97,15 @@
 </head>
 <body class="bg-steak-black text-stone-200 font-sans antialiased selection:bg-steak-gold selection:text-black overflow-x-hidden">
 
-  <!-- ÉLÉMENTS DU CURSEUR PERSONNALISÉ -->
-  <div id="custom-cursor-dot" class="hidden md:block"></div>
-  <div id="custom-cursor-outline" class="hidden md:block"></div>
+  <!-- CURSEUR CUSTOM -->
+  <div id="cursor-dot" class="hidden md:block"></div>
+  <div id="cursor-circle" class="hidden md:block"></div>
 
-  <!-- HEADER PRESTIGE -->
+  <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-steak-border/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
       
-      <!-- LOGO STEAKHOUSE -->
+      <!-- LOGO -->
       <a href="#" class="flex items-center gap-3">
         <span class="text-steak-gold text-2xl sm:text-3xl"><i class="fa-solid fa-fire-burner"></i></span>
         <div class="flex flex-col">
@@ -114,7 +114,7 @@
         </div>
       </a>
 
-      <!-- NAVIGATION DESKTOP -->
+      <!-- NAV DESKTOP -->
       <nav class="hidden lg:flex items-center gap-8 text-[11px] font-semibold tracking-[0.25em] uppercase text-stone-300">
         <a href="#about" class="hover:text-steak-gold transition">À Propos</a>
         <a href="#signatures" class="hover:text-steak-gold transition">Signatures</a>
@@ -123,9 +123,8 @@
         <a href="#contact" class="hover:text-steak-gold transition">Accès & Horaires</a>
       </nav>
 
-      <!-- ACTIONS HEADER -->
+      <!-- BOUTONS ACTIONS -->
       <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Bouton Instagram -->
         <a href="https://instagram.com/lesgrilladesdigo" 
            target="_blank" 
            rel="noopener noreferrer"
@@ -134,12 +133,10 @@
           <i class="fa-brands fa-instagram text-sm"></i>
         </a>
 
-        <!-- Bouton Réserver -->
         <a href="#reservation" class="hidden sm:inline-block px-6 py-3 border border-steak-gold text-steak-gold hover:bg-steak-gold hover:text-black transition-all duration-300 text-[11px] font-bold uppercase tracking-[0.2em]">
           Réserver une table
         </a>
 
-        <!-- Hamburger Mobile -->
         <button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none ml-1">
           <i class="fa-solid fa-bars-staggered"></i>
         </button>
@@ -178,21 +175,21 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div class="max-w-2xl space-y-6">
         
-        <div data-aos="fade-down" data-aos-duration="900" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-steak-border text-[11px] font-bold uppercase tracking-[0.25em] text-steak-gold">
+        <div data-aos="fade-down" data-aos-duration="800" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-steak-border text-[11px] font-bold uppercase tracking-[0.25em] text-steak-gold">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>African Dibiterie & Steaks Braisés</span>
         </div>
 
-        <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold uppercase text-white leading-[1.08] tracking-tight">
+        <h1 data-aos="fade-up" data-aos-delay="150" data-aos-duration="900" class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold uppercase text-white leading-[1.08] tracking-tight">
           Cuit à la Braise.<br>
           <span class="text-steak-gold">Forgé par la Passion.</span>
         </h1>
 
-        <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" class="text-sm sm:text-base text-stone-300 font-light leading-relaxed max-w-xl">
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="900" class="text-sm sm:text-base text-stone-300 font-light leading-relaxed max-w-xl">
           Découvrez la quintessence du véritable dibi d'agneau et des pièces de viande nobles cuites au feu de bois. Une atmosphère feutrée et conviviale aux Almadies.
         </p>
 
-        <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000" class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+        <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="900" class="flex flex-col sm:flex-row items-center gap-4 pt-4">
           <a href="#reservation" class="w-full sm:w-auto px-8 py-4 bg-steak-gold hover:bg-steak-goldHover text-black font-display font-bold text-xs uppercase tracking-[0.2em] transition duration-300 text-center shadow-xl">
             Réserver une table
           </a>
@@ -210,25 +207,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         
-        <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col items-center text-center space-y-2">
+        <div data-aos="fade-up" data-aos-delay="50" class="flex flex-col items-center text-center space-y-2">
           <span class="text-steak-gold text-2xl"><i class="fa-solid fa-cow"></i></span>
           <h4 class="font-display text-xs uppercase tracking-[0.2em] text-white font-bold">Viandes d'Exception</h4>
           <p class="text-[11px] text-steak-muted max-w-[200px]">Black Angus, Tomahawk & agneau certifiés 100% Halal</p>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col items-center text-center space-y-2">
+        <div data-aos="fade-up" data-aos-delay="150" class="flex flex-col items-center text-center space-y-2">
           <span class="text-steak-gold text-2xl"><i class="fa-solid fa-fire"></i></span>
           <h4 class="font-display text-xs uppercase tracking-[0.2em] text-white font-bold">Feu de Bois Pur</h4>
           <p class="text-[11px] text-steak-muted max-w-[200px]">Marinades traditionnelles et braise ardente pour révéler chaque suc</p>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col items-center text-center space-y-2">
+        <div data-aos="fade-up" data-aos-delay="250" class="flex flex-col items-center text-center space-y-2">
           <span class="text-steak-gold text-2xl"><i class="fa-solid fa-clock"></i></span>
           <h4 class="font-display text-xs uppercase tracking-[0.2em] text-white font-bold">Service Nocturne</h4>
           <p class="text-[11px] text-steak-muted max-w-[200px]">Ouvert du jeudi au dimanche jusqu'à 06h00 du matin</p>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col items-center text-center space-y-2">
+        <div data-aos="fade-up" data-aos-delay="350" class="flex flex-col items-center text-center space-y-2">
           <span class="text-steak-gold text-2xl"><i class="fa-solid fa-location-dot"></i></span>
           <h4 class="font-display text-xs uppercase tracking-[0.2em] text-white font-bold">Cadre aux Almadies</h4>
           <p class="text-[11px] text-steak-muted max-w-[200px]">Route des Almadies (Ex Five), parking et terrasse sous verrière</p>
@@ -238,17 +235,17 @@
     </div>
   </section>
 
-  <!-- SECTION À PROPOS AVEC TYPOGRAPHIE ÉDITORIALE & SIGNATURE -->
+  <!-- SECTION À PROPOS AVEC CITATION & SIGNATURE -->
   <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
       
-      <!-- Texte descriptif & Signature -->
-      <div data-aos="fade-right" data-aos-duration="1000" class="space-y-6">
+      <!-- Texte descriptif & Signature manuscrite -->
+      <div data-aos="fade-right" data-aos-duration="900" class="space-y-6">
         <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">L'Établissement</span>
         <h2 class="font-display text-3xl sm:text-5xl text-white font-bold uppercase tracking-tight leading-tight">
           Un Temple du Dibi Bâti par la Passion
         </h2>
-        <div data-aos="zoom-in-right" data-aos-delay="200" class="w-20 h-0.5 bg-steak-gold shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
+        <div class="w-20 h-0.5 bg-steak-gold shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
         
         <p class="text-stone-300 text-sm leading-relaxed font-light">
           Aux <strong class="text-white font-semibold">Grillades d'IGO</strong>, nous perpétuons l'art ancestral de la dibiterie ouest-africaine tout en l'élevant aux standards de la haute restauration de viande[span_0](start_span)[span_0](end_span).
@@ -257,8 +254,8 @@
           Chaque découpe est minutieusement préparée, frottée d'épices soigneusement dosées et grillée sur une braise ardente. Que vous partagiez un plateau de dibi fumant ou une côte d'exception entre épicuriens, l'expérience est pensée dans les moindres détails.
         </p>
 
-        <!-- CITATION ÉDITORIALE & SIGNATURE MANUSCRITE DU MAÎTRE GRILLADIN -->
-        <div data-aos="fade-up" data-aos-delay="300" class="pt-4 border-l-2 border-steak-gold/40 pl-6 space-y-3">
+        <!-- BLOC CITATION ÉDITORIALE -->
+        <div class="pt-4 border-l-2 border-steak-gold/40 pl-6 space-y-3">
           <p class="font-serif italic text-lg sm:text-xl text-stone-200 leading-snug">
             « La braise ne pardonne pas l'approximation. Dompter le feu et honorer le grain de la viande, c'est toute la promesse que nous déposons dans votre assiette. »
           </p>
@@ -267,7 +264,7 @@
               <span class="block text-xs uppercase tracking-widest text-steak-gold font-bold">Le Maître Grilladin</span>
               <span class="text-[10px] text-steak-muted uppercase tracking-wider">Les Grillades d'IGO • Dakar</span>
             </div>
-            <!-- Signature calligraphiée -->
+            <!-- Signature manuscrite stylisée -->
             <span class="font-signature text-3xl sm:text-4xl text-steak-lightgold select-none -rotate-3 pr-4">
               Igo Grillardin
             </span>
@@ -276,7 +273,7 @@
       </div>
 
       <!-- Devanture réelle -->
-      <div data-aos="fade-left" data-aos-duration="1000" class="relative group">
+      <div data-aos="fade-left" data-aos-duration="900" class="relative group">
         <div class="aspect-[4/5] sm:aspect-square w-full rounded-2xl overflow-hidden border border-steak-border shadow-2xl relative">
           <img src="facade-igo.jpg" 
                alt="Devanture Les Grillades d'IGO Almadies" 
@@ -314,7 +311,7 @@
         </a>
       </div>
 
-      <!-- Grille des 4 créations épurées -->
+      <!-- 4 cartes épurées -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- 01 : DIBI AGNEAU SUPRÊME -->
@@ -442,36 +439,36 @@
     </div>
   </section>
 
-  <!-- SECTION MENU SUR ONGLETS DYNAMIQUES -->
+  <!-- SECTION MENU SUR ONGLETS DYNAMIQUES (JS CORRIGÉ) -->
   <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-12 space-y-2" data-aos="fade-up">
       <span class="text-[10px] font-bold uppercase tracking-[0.35em] text-steak-gold">Carte Gastronomique</span>
       <h2 class="font-display text-3xl sm:text-5xl text-white font-bold uppercase tracking-tight">Le Menu</h2>
-      <div data-aos="zoom-in" data-aos-delay="200" class="w-20 h-0.5 bg-steak-gold mx-auto mt-4 shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
-      <p class="text-xs text-steak-muted pt-2 font-light">Sélectionnez une catégorie pour explorer nos créations culinaires.</p>
+      <div class="w-20 h-0.5 bg-steak-gold mx-auto mt-4 shadow-[0_0_8px_rgba(197,160,89,0.8)]"></div>
+      <p class="text-xs text-steak-muted pt-2 font-light">Cliquez sur une catégorie pour afficher les créations correspondantes.</p>
     </div>
 
-    <!-- Sélecteur d'onglets -->
-    <div data-aos="fade-up" data-aos-delay="100" class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-12 no-scrollbar">
-      <button onclick="switchTab('tab-prestige')" class="tab-btn active shrink-0 px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-gold bg-steak-gold text-black">
+    <!-- BOUTONS D'ONGLETS -->
+    <div data-aos="fade-up" class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-12">
+      <button data-tab="tab-prestige" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-gold bg-steak-gold text-black shrink-0">
         Pièces d'Exception[span_8](start_span)[span_8](end_span)
       </button>
-      <button onclick="switchTab('tab-dibis')" class="tab-btn shrink-0 px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white">
+      <button data-tab="tab-dibis" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
         Dibis & Grillades[span_9](start_span)[span_9](end_span)
       </button>
-      <button onclick="switchTab('tab-entrees')" class="tab-btn shrink-0 px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white">
+      <button data-tab="tab-entrees" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
         Entrées & Tapas[span_10](start_span)[span_10](end_span)
       </button>
-      <button onclick="switchTab('tab-extras')" class="tab-btn shrink-0 px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white">
+      <button data-tab="tab-extras" class="tab-btn px-5 py-3 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 border border-steak-border bg-steak-panel text-stone-300 hover:border-steak-gold hover:text-white shrink-0">
         Accompagnements, Desserts & Jus[span_11](start_span)[span_11](end_span)
       </button>
     </div>
 
-    <!-- Contenu des onglets -->
+    <!-- CONTENUS DES ONGLETS -->
     <div class="min-h-[420px]">
       
       <!-- ONGLET 1 : PIÈCES D'EXCEPTION -->
-      <div id="tab-prestige" class="tab-content active space-y-6">
+      <div id="tab-prestige" class="tab-panel active space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <div class="bg-steak-panel border border-steak-border hover:border-steak-gold/50 transition p-6 rounded-2xl flex flex-col justify-between">
@@ -560,7 +557,6 @@
 
         </div>
 
-        <!-- Banquet Demi Agneau Cuit -->
         <div class="mt-6 bg-gradient-to-r from-steak-panel via-steak-card to-black border border-steak-gold/40 p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div class="space-y-2">
             <span class="text-[10px] uppercase font-bold tracking-widest bg-steak-gold/20 text-steak-gold px-3 py-1 border border-steak-gold/30">
@@ -582,7 +578,7 @@
       </div>
 
       <!-- ONGLET 2 : DIBIS & GRILLADES -->
-      <div id="tab-dibis" class="tab-content space-y-8">
+      <div id="tab-dibis" class="tab-panel space-y-8">
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex justify-between items-center">
@@ -637,14 +633,14 @@
       </div>
 
       <!-- ONGLET 3 : ENTRÉES & TAPAS -->
-      <div id="tab-entrees" class="tab-content">
+      <div id="tab-entrees" class="tab-panel">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <div class="bg-steak-panel border border-steak-border p-6 rounded-2xl flex flex-col justify-between">
             <div>
               <span class="text-[10px] uppercase text-steak-gold tracking-widest font-bold">Fait Maison</span>
               <h4 class="font-display text-base font-bold text-white uppercase mt-1">Pastels x3 (Thon)</h4>
-              <p class="text-xs text-steak-muted mt-2">Tapas dorées et croustillantes farcies au thon épicé avec sauce tomate piquante[span_18](start_span)[span_18](end_span).</p>
+              <p class="text-xs text-steak-muted mt-2">Tapas croustillantes farcies au thon épicé avec sauce tomate piquante[span_18](start_span)[span_18](end_span).</p>
             </div>
             <span class="font-display font-bold text-steak-lightgold text-lg mt-6 pt-4 border-t border-white/5">2 500 FCFA</span>
           </div>
@@ -671,7 +667,7 @@
       </div>
 
       <!-- ONGLET 4 : GARNITURES, DESSERTS & BOISSONS -->
-      <div id="tab-extras" class="tab-content">
+      <div id="tab-extras" class="tab-panel">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <div class="bg-steak-panel border border-steak-border rounded-2xl p-6">
@@ -785,7 +781,7 @@
 
         </div>
 
-        <button onclick="handleReservation()" class="w-full py-4 bg-steak-gold hover:bg-steak-goldHover text-black font-display font-bold text-xs uppercase tracking-[0.2em] transition duration-300">
+        <button id="btn-submit-res" class="w-full py-4 bg-steak-gold hover:bg-steak-goldHover text-black font-display font-bold text-xs uppercase tracking-[0.2em] transition duration-300">
           Confirmer la réservation sur WhatsApp
         </button>
       </div>
@@ -795,7 +791,7 @@
 
   <!-- BANDEAU LIVRAISON RAPIDE DAKAR -->
   <section id="livraison" class="py-16 bg-black border-t border-steak-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <div>
         <div class="flex items-center justify-center md:justify-start gap-2 text-steak-gold text-xs uppercase tracking-widest font-bold mb-1">
           <i class="fa-solid fa-motorcycle"></i>
@@ -882,94 +878,103 @@
   </a>
 
   <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-  <!-- SCRIPTS : ANIMATIONS, CURSEUR, ONGLETS & RÉSERVATION -->
+  <!-- SCRIPTS ULTRA-ROBUSTES (SANS BOGUES D'ÉVÉNEMENT) -->
   <script>
-    // Initialisation AOS (Animations au défilement)
-    AOS.init({
-      once: true,
-      duration: 800,
-      easing: 'ease-out-cubic',
-      offset: 60
-    });
-
-    // Curseur Haute Gastronomie
-    const cursorDot = document.getElementById('custom-cursor-dot');
-    const cursorOutline = document.getElementById('custom-cursor-outline');
-
-    if (window.matchMedia("(pointer: fine)").matches) {
-      window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Point immédiat
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Cercle avec amorti
-        cursorOutline.animate({
-          left: `${posX}px`,
-          top: `${posY}px`
-        }, { duration: 350, fill: "forwards" });
-      });
-
-      // Effet d'expansion du curseur sur éléments cliquables
-      const clickables = document.querySelectorAll('a, button, input, select, textarea, .tab-btn, .group');
-      clickables.forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
-      });
-    }
-
-    // Menu Mobile
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Système d'onglets dynamique
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-steak-gold', 'text-black', 'border-steak-gold');
-        btn.classList.add('bg-steak-panel', 'text-stone-300', 'border-steak-border');
-      });
-
-      const activeContent = document.getElementById(tabId);
-      if (activeContent) {
-        activeContent.classList.add('active');
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialisation des animations AOS
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          once: true,
+          duration: 800,
+          easing: 'ease-out-cubic',
+          offset: 40
+        });
       }
 
-      if (event && event.currentTarget) {
-        const activeBtn = event.currentTarget;
-        activeBtn.classList.remove('bg-steak-panel', 'text-stone-300', 'border-steak-border');
-        activeBtn.classList.add('bg-steak-gold', 'text-black', 'border-steak-gold');
+      // 2. Gestion des onglets du menu (écouteurs d'événements stricts)
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('data-tab');
+
+          // Réinitialiser les boutons
+          tabButtons.forEach(btn => {
+            btn.classList.remove('bg-steak-gold', 'text-black', 'border-steak-gold');
+            btn.classList.add('bg-steak-panel', 'text-stone-300', 'border-steak-border');
+          });
+
+          // Activer le bouton cliqué
+          button.classList.remove('bg-steak-panel', 'text-stone-300', 'border-steak-border');
+          button.classList.add('bg-steak-gold', 'text-black', 'border-steak-gold');
+
+          // Masquer tous les panneaux
+          tabPanels.forEach(panel => {
+            panel.classList.remove('active');
+          });
+
+          // Afficher le panneau correspondant
+          const activePanel = document.getElementById(targetId);
+          if (activePanel) {
+            activePanel.classList.add('active');
+          }
+        });
+      });
+
+      // 3. Curseur fluide personnalisé (ordinateurs avec pointeur fin)
+      const dot = document.getElementById('cursor-dot');
+      const circle = document.getElementById('cursor-circle');
+
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && dot && circle) {
+        window.addEventListener('mousemove', (e) => {
+          dot.style.left = e.clientX + 'px';
+          dot.style.top = e.clientY + 'px';
+
+          circle.animate({
+            left: e.clientX + 'px',
+            top: e.clientY + 'px'
+          }, { duration: 300, fill: 'forwards' });
+        });
+
+        const interactives = document.querySelectorAll('a, button, input, select, textarea, .tab-btn');
+        interactives.forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+        });
       }
-    }
 
-    // Gestionnaire de réservation WhatsApp
-    function handleReservation() {
-      const dateVal = document.getElementById('res-date').value || "ce soir";
-      const timeVal = document.getElementById('res-time').value;
-      const guestsVal = document.getElementById('res-guests').value;
+      // 4. Menu mobile Drawer
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-      const message = `Bonjour Les Grillades d'IGO, je souhaite réserver une table pour ${guestsVal} le ${dateVal} à ${timeVal}.`;
-      const encodedMsg = encodeURIComponent(message);
-      
-      window.open(`https://wa.me/221785559494?text=${encodedMsg}`, '_blank');
-    }
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+
+      // 5. Réservation WhatsApp
+      const submitResBtn = document.getElementById('btn-submit-res');
+      if (submitResBtn) {
+        submitResBtn.addEventListener('click', () => {
+          const date = document.getElementById('res-date').value || "ce soir";
+          const time = document.getElementById('res-time').value;
+          const guests = document.getElementById('res-guests').value;
+
+          const msg = `Bonjour Les Grillades d'IGO, je souhaite réserver une table pour ${guests} le ${date} à ${time}.`;
+          window.open(`https://wa.me/221785559494?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+      }
+    });
   </script>
 </body>
 </html>
