@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Grillades d'IGO | Dibi d'exception aux Almadies, Dakar</title>
+  <meta name="description" content="Savourez l'authenticité des grillades au feu de bois et du véritable Dibi d'agneau aux Almadies. Sur place, à emporter ou en livraison à Dakar.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#EA580C',
+              darkorange: '#C2410C',
+              gold: '#F59E0B',
+              dark: '#121212',
+              card: '#1C1917',
+              muted: '#A8A29E'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0f0e0d] text-stone-100 font-sans antialiased selection:bg-brand-orange selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0f0e0d]/90 backdrop-blur-md border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2">
+        <span class="text-brand-orange text-3xl"><i class="fa-solid fa-fire-flame-curved"></i></span>
+        <span>Les Grillades d'<span class="text-brand-orange">IGO</span></span>
+      </a>
+
+      <!-- Navigation liens Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+        <a href="#menu" class="hover:text-brand-orange transition">La Carte</a>
+        <a href="#apropos" class="hover:text-brand-orange transition">Notre Savoir-Faire</a>
+        <a href="#livraison" class="hover:text-brand-orange transition">Livraison</a>
+        <a href="#contact" class="hover:text-brand-orange transition">Accès & Horaires</a>
+      </nav>
+
+      <!-- CTA Contact rapide Desktop -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="tel:+221785559494" class="text-stone-300 hover:text-white flex items-center gap-2 text-sm font-semibold pr-2">
+          <i class="fa-solid fa-phone text-brand-orange"></i> 78 555 94 94
+        </a>
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="bg-brand-orange hover:bg-brand-darkorange text-white text-sm font-semibold px-4 py-2.5 rounded-full transition shadow-lg shadow-orange-900/30 flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Commander
+        </a>
+      </div>
+
+      <!-- Menu Hamburger Mobile -->
+      <button id="menu-btn" class="md:hidden text-stone-300 hover:text-white text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Navigation Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-stone-900 border-b border-stone-800 px-6 py-6 space-y-4">
+      <a href="#menu" class="block text-stone-200 text-lg hover:text-brand-orange">La Carte</a>
+      <a href="#apropos" class="block text-stone-200 text-lg hover:text-brand-orange">Notre Histoire</a>
+      <a href="#livraison" class="block text-stone-200 text-lg hover:text-brand-orange">Livraison</a>
+      <a href="#contact" class="block text-stone-200 text-lg hover:text-brand-orange">Accès & Horaires</a>
+      <div class="pt-4 border-t border-stone-800 flex flex-col gap-3">
+        <a href="tel:+221785559494" class="w-full text-center bg-stone-800 text-stone-200 py-3 rounded-xl font-medium">
+          <i class="fa-solid fa-phone text-brand-orange mr-2"></i> Appeler l'équipe
+        </a>
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="w-full text-center bg-brand-orange text-white py-3 rounded-xl font-medium">
+          <i class="fa-brands fa-whatsapp mr-2"></i> Commander sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <!-- Image de fond avec overlay sombre -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1920" 
+           alt="Grillades au feu de bois" 
+           class="w-full h-full object-cover opacity-25">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0f0e0d] via-[#0f0e0d]/70 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-orange-500/10 text-brand-orange border border-orange-500/20">
+        <i class="fa-solid fa-award"></i> Viande Halal & Cuisson au Feu de Bois
+      </span>
+      <h1 class="text-4xl sm:text-6xl font-serif font-extrabold tracking-tight text-white leading-tight">
+        Les Grillades d'<span class="text-brand-orange">IGO</span> – L'authenticité du Dibi aux Almadies.
+      </h1>
+      <p class="text-lg sm:text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed">
+        Savourez nos viandes d'exception sélectionnées avec soin, assaisonnées selon la tradition et cuites à la perfection au feu de bois. Sur place, à emporter ou en livraison partout à Dakar.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-brand-orange hover:bg-brand-darkorange text-white font-bold rounded-xl shadow-lg transition duration-200">
+          Voir le Menu complet
+        </a>
+        <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." target="_blank" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-xl"></i> Commander maintenant
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LE MENU / LA CARTE -->
+  <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-brand-orange font-semibold text-sm uppercase tracking-widest">Plaisir gourmand</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">La Carte & Les Délices</h2>
+      <div class="w-20 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- Catégorie 1: Viandes -->
+    <div class="mb-16">
+      <div class="flex items-center gap-3 border-b border-stone-800 pb-4 mb-8">
+        <span class="text-3xl text-brand-orange"><i class="fa-solid fa-drumstick-bite"></i></span>
+        <h3 class="text-2xl font-serif font-bold text-white">Les Spécialités de Viandes <span class="text-xs font-sans text-brand-gold font-normal border border-brand-gold/40 px-2 py-0.5 rounded ml-2">Certifié Halal</span></h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Plat 1 -->
+        <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800/80 hover:border-brand-orange/40 transition">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h4 class="text-xl font-bold text-white">Le Véritable Dibi d'Agneau</h4>
+              <p class="text-stone-400 text-sm mt-2">Morceaux d'agneau tendres et juteux, marinés aux épices locales, grillés lentement au feu de bois et servis avec leurs oignons caramélisés et moutarde.</p>
+            </div>
+            <span class="text-brand-orange font-bold text-lg whitespace-nowrap">Sur mesure</span>
+          </div>
+          <div class="mt-4 pt-4 border-t border-stone-800 flex flex-wrap gap-2 text-xs text-stone-300">
+            <span class="bg-stone-800 px-2.5 py-1 rounded-md">Portion individuelle</span>
+            <span class="bg-stone-800 px-2.5 py-1 rounded-md">Demi-kilo</span>
+            <span class="bg-stone-800 px-2.5 py-1 rounded-md">Kilo entier</span>
+          </div>
+        </div>
+
+        <!-- Plat 2 -->
+        <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800/80 hover:border-brand-orange/40 transition">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h4 class="text-xl font-bold text-white">Le Poulet Grillé IGO</h4>
+              <p class="text-stone-400 text-sm mt-2">Poulet entier ou demi-poulet mariné à l'africaine selon notre recette secrète, peau croustillante et chair tendre.</p>
+            </div>
+            <span class="text-brand-orange font-bold text-lg whitespace-nowrap">À la carte</span>
+          </div>
+          <div class="mt-4 pt-4 border-t border-stone-800 flex flex-wrap gap-2 text-xs text-stone-300">
+            <span class="bg-stone-800 px-2.5 py-1 rounded-md">Demi-poulet</span>
+            <span class="bg-stone-800 px-2.5 py-1 rounded-md">Poulet entier</span>
+          </div>
+        </div>
+
+        <!-- Plat 3 -->
+        <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800/80 hover:border-brand-orange/40 transition">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h4 class="text-xl font-bold text-white">Les Brochettes Mixtes</h4>
+              <p class="text-stone-400 text-sm mt-2">Brochettes de bœuf ou de filet de bœuf très tendre, intercalées de poivrons croquants et d'oignons doux.</p>
+            </div>
+            <span class="text-brand-orange font-bold text-lg whitespace-nowrap">La portion</span>
+          </div>
+        </div>
+
+        <!-- Plat 4 -->
+        <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800/80 hover:border-brand-orange/40 transition">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h4 class="text-xl font-bold text-white">Les Pièces d'Exception</h4>
+              <p class="text-stone-400 text-sm mt-2">Pour les grands amateurs : côtes de bœuf, faux-filet ou viandes importées selon arrivage, cuites selon votre convenance.</p>
+            </div>
+            <span class="text-brand-orange font-bold text-lg whitespace-nowrap">Selon arrivage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catégorie 2 & 3 en Grille : Accompagnements et Boissons -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Accompagnements -->
+      <div>
+        <div class="flex items-center gap-3 border-b border-stone-800 pb-4 mb-6">
+          <span class="text-2xl text-brand-orange"><i class="fa-solid fa-plate-wheat"></i></span>
+          <h3 class="text-2xl font-serif font-bold text-white">Accompagnements au choix</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Aloko</h5>
+              <p class="text-xs text-stone-400">Bananes plantains mûres frites, dorées et fondantes.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Portion</span>
+          </div>
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Frites Maison</h5>
+              <p class="text-xs text-stone-400">Pommes de terre fraîches croustillantes préparées minute.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Portion</span>
+          </div>
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Attiéké</h5>
+              <p class="text-xs text-stone-400">Semoule de manioc savoureuse, parfaite avec le dibi ou poulet.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Portion</span>
+          </div>
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Riz Blanc ou Sauté</h5>
+              <p class="text-xs text-stone-400">Riz blanc parfumé ou sauté aux petits légumes de saison.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Portion</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boissons -->
+      <div>
+        <div class="flex items-center gap-3 border-b border-stone-800 pb-4 mb-6">
+          <span class="text-2xl text-brand-orange"><i class="fa-solid fa-wine-glass"></i></span>
+          <h3 class="text-2xl font-serif font-bold text-white">Boissons & Jus Locaux</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Jus de Bissap Maison</h5>
+              <p class="text-xs text-stone-400">Fleur d'hibiscus infusée avec une pointe de menthe fraîche.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Bouteille</span>
+          </div>
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Jus de Bouye</h5>
+              <p class="text-xs text-stone-400">Fruit du baobab / pain de singe, riche, onctueux et parfumé.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Bouteille</span>
+          </div>
+          <div class="p-4 bg-stone-900/40 rounded-xl border border-stone-800 flex justify-between items-center">
+            <div>
+              <h5 class="font-bold text-white">Sodas & Eaux Minérales</h5>
+              <p class="text-xs text-stone-400">Canettes fraîches, eau plate ou gazeuse.</p>
+            </div>
+            <span class="text-sm font-semibold text-stone-300">Frais</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION À PROPOS -->
+  <section id="apropos" class="py-20 bg-stone-900/50 border-y border-stone-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Tradition & Passion</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Le secret de nos grillades</h2>
+          <p class="text-stone-300 leading-relaxed">
+            Aux <strong class="text-white">Grillades d'IGO</strong>, nous perpétuons l'art de la grillade ouest-africaine. Notre secret ? Une sélection rigoureuse de viandes de première qualité, une marinade jalousement gardée et une cuisson maîtrisée qui préserve toute la tendreté et les sucs de la viande.
+          </p>
+          <p class="text-stone-300 leading-relaxed">
+            Que vous partagiez un plateau de dibi en famille ou que vous preniez un repas sur le pouce entre collègues, nous mettons la même passion dans votre assiette.
+          </p>
+          <div class="grid grid-cols-3 gap-4 pt-4 text-center">
+            <div class="p-3 bg-stone-800/50 rounded-xl">
+              <span class="text-2xl font-bold text-brand-orange">100%</span>
+              <p class="text-xs text-stone-400 mt-1">Viande Fraîche</p>
+            </div>
+            <div class="p-3 bg-stone-800/50 rounded-xl">
+              <span class="text-2xl font-bold text-brand-orange">Feu de bois</span>
+              <p class="text-xs text-stone-400 mt-1">Cuisson Authentique</p>
+            </div>
+            <div class="p-3 bg-stone-800/50 rounded-xl">
+              <span class="text-2xl font-bold text-brand-orange">Almadies</span>
+              <p class="text-xs text-stone-400 mt-1">Cadre Chaleureux</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=900" 
+               alt="Grillades préparées avec passion" 
+               class="rounded-3xl shadow-2xl border border-stone-800 w-full object-cover h-[450px]">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION LIVRAISON -->
+  <section id="livraison" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-stone-900 via-stone-900 to-stone-950 p-8 sm:p-12 rounded-3xl border border-stone-800 relative overflow-hidden">
+      <div class="max-w-2xl">
+        <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Service Rapide</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2">Vos grillades livrées chaudes chez vous</h2>
+        <p class="text-stone-300 mt-4 leading-relaxed">
+          Pas envie de sortir ? <em>Les Grillades d'IGO</em> viennent à vous. Profitez de notre service de livraison rapide sur Dakar et sa banlieue. Nos emballages isothermes garantissent que votre dibi arrive à table aussi chaud et croustillant qu'à la sortie du grill.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <h3 class="text-white font-bold text-lg">Comment commander ?</h3>
+          <ol class="space-y-3">
+            <li class="flex items-center gap-3 text-stone-300">
+              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">1</span>
+              <span>Parcourez notre menu en ligne.</span>
+            </li>
+            <li class="flex items-center gap-3 text-stone-300">
+              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">2</span>
+              <span>Cliquez sur le bouton WhatsApp pour envoyer votre commande en 1 clic.</span>
+            </li>
+            <li class="flex items-center gap-3 text-stone-300">
+              <span class="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange font-bold flex items-center justify-center text-sm">3</span>
+              <span>Confirmez votre adresse et payez à la livraison (Espèces ou Wave / Orange Money).</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="mt-8">
+          <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20passer%20une%20commande%20en%20livraison" target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-lg">
+            <i class="fa-brands fa-whatsapp text-2xl"></i> Commander en livraison
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE TRAITEUR & PRIVATISATION -->
+  <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="bg-stone-900 p-8 rounded-3xl border border-stone-800 text-center">
+      <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Événements & Banquets</span>
+      <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">Privatisation & Service Traiteur</h3>
+      <p class="text-stone-400 text-sm mt-2 max-w-xl mx-auto">
+        Mariages, baptêmes, anniversaires corporatifs ou fêtes privées : confiez vos buffets dibi et grillades à notre équipe.
+      </p>
+
+      <form class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left" onsubmit="event.preventDefault(); alert('Merci ! Nous vous recontacterons dans les plus brefs délais.');">
+        <input type="text" placeholder="Votre nom" required class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
+        <input type="tel" placeholder="Votre numéro de téléphone" required class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
+        <input type="date" class="bg-stone-800 border border-stone-700 text-stone-300 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
+        <input type="number" placeholder="Nombre d'invités estimé" class="bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm">
+        <textarea placeholder="Détails de l'événement..." rows="3" class="sm:col-span-2 bg-stone-800 border border-stone-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-brand-orange text-sm"></textarea>
+        <button type="submit" class="sm:col-span-2 bg-brand-orange hover:bg-brand-darkorange text-white font-bold py-3.5 rounded-xl transition">
+          Demander un devis traiteur
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SECTION CONTACT, HORAIRES & MAPS -->
+  <section id="contact" class="py-20 bg-stone-950 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Informations pratiques -->
+        <div class="space-y-6">
+          <span class="text-brand-orange font-semibold text-sm uppercase tracking-wider">Trouvez-nous</span>
+          <h2 class="text-3xl font-serif font-bold text-white">Accès & Horaires</h2>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold">Adresse exacte</h4>
+                <p class="text-stone-400 text-sm">Route des Almadies, Lot N°10 (juste après le KFC), Dakar, Sénégal.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold">Téléphones</h4>
+                <p class="text-stone-400 text-sm">
+                  <a href="tel:+221338173838" class="hover:text-white transition">+221 33 817 38 38</a> &nbsp;|&nbsp; 
+                  <a href="tel:+221785559494" class="hover:text-white transition">+221 78 555 94 94</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-brand-orange text-lg shrink-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold">Horaires de service</h4>
+                <ul class="text-stone-400 text-sm mt-1 space-y-1">
+                  <li><strong class="text-stone-200">Jeudi au Dimanche :</strong> 12h00 – 06h00 (Service continu)</li>
+                  <li><strong class="text-stone-200">Vendredi :</strong> 12h00 – 02h00 <span class="text-xs text-stone-500">(Fermeture prière 13h–15h)</span></li>
+                  <li><strong class="text-stone-200">Lundi au Mercredi :</strong> Nous consulter</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div class="rounded-3xl overflow-hidden border border-stone-800 h-[350px] lg:h-full min-h-[300px]">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.625345711681!2d-17.51866462414777!3d14.733796685767115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172517eb28abf%3A0xe5f9bce416c1f1f!2sAlmadies%2C%20Dakar!5e0!3m2!1sfr!2ssn!4v1700000000000!5m2!1sfr!2ssn" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer class="bg-black py-8 border-t border-stone-900 text-center text-xs text-stone-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Les Grillades d'IGO. Tous droits réservés.</p>
+      <p class="mt-1">Le temple du Dibi et des viandes au feu de bois aux Almadies, Dakar.</p>
+    </div>
+  </footer>
+
+  <!-- BOUTON FLOTTANT WHATSAPP (Mobile-First) -->
+  <a href="https://wa.me/221785559494?text=Bonjour%20IGO,%20je%20souhaite%20commander..." 
+     target="_blank" 
+     aria-label="Commander sur WhatsApp"
+     class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Script Menu Mobile -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fermer le menu lors du clic sur un lien
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
